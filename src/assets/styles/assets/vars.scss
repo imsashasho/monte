@@ -1,0 +1,454 @@
+@use './mixins' as *;
+
+$default-font: 'ScienceGothic-Regular', sans-serif;
+$secondary-font: 'Mulish', sans-serif;
+
+$bezier: cubic-bezier(0.17, 0.67, 0, 1);
+
+:root {
+  --app-height: 100vh;
+  --in: cubic-bezier(0.13, 0.81, 0.23, 0.96);
+  --header-h: calc((80 / 1920) * 100vw);
+  --header-s: 5vw;
+  --logo-w: 10.57vw;
+  --logo-h: 4.68vw;
+  --sliceFigure: 150px;
+
+  --white: rgba(241, 241, 242, 1);
+  --body: rgba(216, 216, 216, 1);
+  --red: rgba(118, 33, 46, 1);
+  --purple: rgba(67, 21, 37, 1);
+  --ocher: rgba(234, 211, 193, 1);
+  --brown: rgba(134, 118, 104, 1);
+  --black: rgba(22, 15, 16, 1);
+  --purple-gradient: linear-gradient(
+    to bottom,
+    rgba(86, 35, 51, 0.337) 0%,
+    rgba(67, 21, 37, 0.263) 100%
+  );
+  --accent: rgba(234, 76, 87, 1);
+
+  --black: #000000;
+  --anthracite: #1c1c1e;
+  --basalt-gray: #64676c;
+  --concrete: #ececec;
+  --ivory: #e3dcd0;
+  --burnt-clay: #9c4b33;
+  --terracotta: #a65941;
+
+  --ivory-hover: #f3f0ea;
+  --ivory-active: #d4ccbf;
+
+  --burnt-clay-hover: #b15d42;
+  --burnt-clay-active: #914830;
+
+  --transition: 0.3s ease-in-out;
+
+  --bg-gradient: linear-gradient(
+    180deg,
+    #627a98 0%,
+    rgba(118, 136, 157, 0.8) 34.13%,
+    rgba(179, 187, 197, 0.58) 72.12%,
+    rgba(215, 219, 224, 0.2) 100%
+  );
+
+  --p375: calc((375 / 1920) * 100vw);
+  --p260: calc((260 / 1920) * 100vw);
+  --p240: calc((240 / 1920) * 100vw);
+  --p190: calc((190 / 1920) * 100vw);
+  --p160: calc((160 / 1920) * 100vw);
+  --p120: calc((120 / 1920) * 100vw);
+  --p100: calc((100 / 1920) * 100vw);
+  --p90: calc((90 / 1920) * 100vw);
+  --p80: calc((80 / 1920) * 100vw);
+  --p70: calc((70 / 1920) * 100vw);
+  --p60: calc((60 / 1920) * 100vw);
+  --p50: calc((50 / 1920) * 100vw);
+  --p40: calc((40 / 1920) * 100vw);
+  --p32: calc((32 / 1920) * 100vw);
+  --p30: calc((30 / 1920) * 100vw);
+  --p20: calc((20 / 1920) * 100vw);
+  --p16: calc((16 / 1920) * 100vw);
+  --p10: calc((10 / 1920) * 100vw);
+  --g110: calc((110 / 1920) * 100vw);
+  --g100: calc((100 / 1920) * 100vw);
+  --g97: calc((97 / 1920) * 100vw);
+  --g90: calc((90 / 1920) * 100vw);
+  --g80: calc((80 / 1920) * 100vw);
+  --g60: calc((60 / 1920) * 100vw);
+  --g40: calc((40 / 1920) * 100vw);
+  --g32: calc((32 / 1920) * 100vw);
+  --g30: calc((30 / 1920) * 100vw);
+  --g24: calc((24 / 1920) * 100vw);
+  --g20: calc((20 / 1920) * 100vw);
+  --g18: calc((18 / 1920) * 100vw);
+  --g16: calc((16 / 1920) * 100vw);
+  --g12: calc((12 / 1920) * 100vw);
+  --g10: calc((10 / 1920) * 100vw);
+  --g8: calc((8 / 1920) * 100vw);
+  --g5: calc((5 / 1920) * 100vw);
+  --g4: calc((4 / 1920) * 100vw);
+  --g2: calc((2 / 1920) * 100vw);
+}
+
+@media screen and (max-width: 1919px) {
+  :root {
+    --sliceFigure-big: 362px;
+    --section-v-offset: 100px;
+    --p375: calc((100 / 1024) * 100vw);
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  :root {
+    --sliceFigure: 100px;
+    --sliceFigure-big: 100px;
+    --black3: rgb(27, 29, 29);
+    --header-h: calc((80 / 768) * 100vw);
+    --logo-w: 27.5vw;
+    --p375: calc((375 / 768) * 100vw);
+    --p260: calc((260 / 768) * 100vw);
+    --p240: calc((122 / 768) * 100vw);
+    --p190: calc((190 / 768) * 100vw);
+    --p160: calc((160 / 768) * 100vw);
+    --p120: calc((120 / 768) * 100vw);
+    --p100: calc((100 / 768) * 100vw);
+    --p90: calc((90 / 768) * 100vw);
+    --p80: calc((80 / 768) * 100vw);
+    --p70: calc((70 / 768) * 100vw);
+    --p60: calc((60 / 768) * 100vw);
+    --p50: calc((50 / 768) * 100vw);
+    --p40: calc((24 / 768) * 100vw);
+    --p30: calc((30 / 768) * 100vw);
+    --p20: calc((20 / 768) * 100vw);
+    --p10: calc((10 / 768) * 100vw);
+    --g110: calc((110 / 768) * 100vw);
+    --g100: calc((100 / 768) * 100vw);
+    --g97: calc((97 / 768) * 100vw);
+    --g90: calc((90 / 768) * 100vw);
+    --g80: calc((80 / 768) * 100vw);
+    --g60: calc((60 / 768) * 100vw);
+    --g40: calc((40 / 768) * 100vw);
+    --g30: calc((30 / 768) * 100vw);
+    --g24: calc((24 / 768) * 100vw);
+    --g20: calc((20 / 768) * 100vw);
+    --g18: calc((18 / 768) * 100vw);
+    --g16: calc((16 / 768) * 100vw);
+    --g12: calc((12 / 768) * 100vw);
+    --g10: calc((10 / 768) * 100vw);
+    --g8: calc((8 / 768) * 100vw);
+    --g5: calc((5 / 768) * 100vw);
+    --g4: calc((4 / 768) * 100vw);
+    --g2: calc((2 / 768) * 100vw);
+    --header-s: 7vw;
+    --logo-h: 6.5vw;
+    --section-v-offset: 50px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  :root {
+    --header-h: calc((68 / 375) * 100vw);
+    --logo-w: 50vw;
+    --logo-h: 10vw;
+    --p375: calc((375 / 375) * 100vw);
+    --p240: calc((100 / 375) * 100vw);
+    --p190: calc((190 / 375) * 100vw);
+    --p160: calc((160 / 375) * 100vw);
+    --p120: calc((120 / 375) * 100vw);
+    --p100: calc((100 / 375) * 100vw);
+    --p90: calc((90 / 375) * 100vw);
+    --p80: calc((80 / 375) * 100vw);
+    --p70: calc((70 / 375) * 100vw);
+    --p60: calc((60 / 375) * 100vw);
+    --p50: calc((50 / 375) * 100vw);
+    --p40: calc((16 / 375) * 100vw);
+    --p30: calc((30 / 375) * 100vw);
+    --p20: calc((20 / 375) * 100vw);
+    --p10: calc((10 / 375) * 100vw);
+    --g110: calc((110 / 375) * 100vw);
+    --g100: calc((100 / 375) * 100vw);
+    --g97: calc((97 / 375) * 100vw);
+    --g90: calc((90 / 375) * 100vw);
+    --g80: calc((80 / 375) * 100vw);
+    --g60: calc((60 / 375) * 100vw);
+    --g48: calc((48 / 375) * 100vw);
+    --g40: calc((32 / 375) * 100vw);
+    --g30: calc((30 / 375) * 100vw);
+    --g24: calc((24 / 375) * 100vw);
+    --g20: calc((20 / 375) * 100vw);
+    --g18: calc((18 / 375) * 100vw);
+    --g16: calc((16 / 375) * 100vw);
+    --g12: calc((12 / 375) * 100vw);
+    --g10: calc((10 / 375) * 100vw);
+    --g8: calc((8 / 375) * 100vw);
+    --g5: calc((5 / 375) * 100vw);
+    --g4: calc((4 / 375) * 100vw);
+    --g2: calc((2 / 375) * 100vw);
+    --section-v-offset: 30px;
+  }
+}
+
+.text-h1 {
+  font-size: vw(72, 1920);
+  font-family: $default-font;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 100%;
+  letter-spacing: vw(-5.76, 1920);
+  text-decoration: none;
+  text-transform: uppercase;
+  color: var(--anthracite);
+
+  @include tablet {
+    font-size: vw(48, 768);
+    letter-spacing: vw(-3.84, 768);
+  }
+
+  @include mobile {
+    font-size: vw(32, 375);
+    letter-spacing: vw(-2.56, 375);
+  }
+}
+
+.text-h2 {
+  font-size: vw(60, 1920);
+  font-family: $secondary-font;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 120%;
+  letter-spacing: vw(-4.8, 1920);
+  text-decoration: none;
+  text-transform: none;
+  color: var(--anthracite);
+
+  @include tablet {
+    font-size: vw(40, 768);
+    letter-spacing: vw(-3.2, 768);
+  }
+
+  @include mobile {
+    font-size: vw(20, 375);
+    letter-spacing: vw(-1.6, 375);
+  }
+}
+
+.text-h3 {
+  font-size: vw(32, 1920);
+  font-family: $default-font;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 115%;
+  letter-spacing: vw(-2.56, 1920);
+  text-decoration: none;
+  text-transform: uppercase;
+  color: var(--anthracite);
+
+  @include tablet {
+    font-size: vw(24, 768);
+    letter-spacing: vw(-1.92, 768);
+  }
+
+  @include mobile {
+    font-size: vw(14, 375);
+    letter-spacing: vw(-1.12, 375);
+  }
+}
+
+.text-h3-mulish {
+  font-size: vw(32, 1920);
+  font-family: $secondary-font;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 130%;
+  letter-spacing: vw(-2.56, 1920);
+  text-decoration: none;
+  text-transform: none;
+  color: var(--anthracite);
+
+  @include tablet {
+    font-size: vw(24, 768);
+    letter-spacing: vw(-1.92, 768);
+  }
+
+  @include mobile {
+    font-size: vw(18, 375);
+    letter-spacing: vw(-1.44, 375);
+  }
+}
+
+.text-subtitle {
+  font-size: vw(24, 1920);
+  font-family: $secondary-font;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 140%;
+  letter-spacing: vw(-0.96, 1920);
+  text-decoration: none;
+  text-transform: none;
+  color: var(--anthracite);
+
+  @include tablet {
+    font-size: vw(24, 768);
+    letter-spacing: vw(-0.72, 768);
+  }
+
+  @include mobile {
+    font-size: vw(18, 375);
+    letter-spacing: vw(-0.72, 375);
+  }
+}
+
+.text-subtitle-bold {
+  font-size: vw(24, 1920);
+  font-family: $secondary-font;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 140%;
+  letter-spacing: vw(-0.96, 1920);
+  text-decoration: none;
+  text-transform: none;
+  color: var(--anthracite);
+
+  @include tablet {
+    font-size: vw(24, 768);
+    letter-spacing: vw(-0.72, 768);
+  }
+
+  @include mobile {
+    font-size: vw(18, 375);
+    letter-spacing: vw(-0.72, 375);
+  }
+}
+
+.text-links {
+  font-size: vw(20, 1920);
+  font-family: $default-font;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 130%;
+  letter-spacing: vw(-1.6, 1920);
+  text-decoration: none;
+  text-transform: uppercase;
+  color: var(--anthracite);
+
+  @include tablet {
+    font-size: vw(20, 768);
+    letter-spacing: vw(-1.12, 768);
+  }
+
+  @include mobile {
+    font-size: vw(14, 375);
+    letter-spacing: vw(-1.12, 375);
+  }
+}
+
+.text-body {
+  font-size: vw(16, 1920);
+  font-family: $secondary-font;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 140%;
+  letter-spacing: vw(-0.64, 1920);
+  text-decoration: none;
+  text-transform: none;
+  color: var(--anthracite);
+
+  @include tablet {
+    font-size: vw(16, 768);
+    letter-spacing: vw(-0.56, 768);
+  }
+
+  @include mobile {
+    font-size: vw(14, 375);
+    letter-spacing: vw(-0.56, 375);
+  }
+}
+
+.text-button {
+  font-size: vw(13, 1920);
+  font-family: $default-font;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 140%;
+  letter-spacing: vw(-1.04, 1920);
+  text-decoration: none;
+  text-transform: uppercase;
+  color: var(--anthracite);
+
+  @include tablet {
+    font-size: vw(13, 768);
+    letter-spacing: vw(-0.88, 768);
+  }
+
+  @include mobile {
+    font-size: vw(11, 375);
+    letter-spacing: vw(-0.88, 375);
+  }
+}
+
+.text-tiny {
+  font-size: vw(12, 1920);
+  font-family: $secondary-font;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 140%;
+  letter-spacing: vw(-0.48, 1920);
+  text-decoration: none;
+  text-transform: none;
+  color: var(--anthracite);
+
+  @include tablet {
+    font-size: vw(12, 768);
+    letter-spacing: vw(-0.48, 768);
+  }
+
+  @include mobile {
+    font-size: vw(12, 375);
+    letter-spacing: vw(-0.48, 375);
+  }
+}
+
+.text-tiny-caps {
+  font-size: vw(12, 1920);
+  font-family: $secondary-font;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 140%;
+  letter-spacing: vw(-0.48, 1920);
+  text-decoration: none;
+  text-transform: uppercase;
+  color: var(--anthracite);
+  @include tablet {
+    font-size: vw(12, 768);
+    letter-spacing: vw(-0.48, 768);
+  }
+
+  @include mobile {
+    font-size: vw(12, 375);
+    letter-spacing: vw(-0.48, 375);
+  }
+}
+
+.text-white {
+  color: var(--white);
+}
+
+.text-ocher {
+  color: var(--ocher);
+}
+
+.text-body-c {
+  color: var(--body);
+}
+
+.text-black {
+  color: var(--black);
+}
+
+.text-red {
+  color: var(--red);
+}
+.text-accent {
+  color: var(--accent);
+}

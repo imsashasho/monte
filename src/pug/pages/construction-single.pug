@@ -1,0 +1,30 @@
+extends ../layout/main
+
+block variable
+  -
+    var title_page = 'construction-single-page'
+    var id_page = 'construction-single-page'
+    var class_page = 'news-single-page' // Using news-single-page class to reuse styles
+
+block meta
+  title= 'Riverside Uman - Хід будівництва'
+  meta(name='description', content='')
+block head
+    link(rel='stylesheet', href="./assets/styles/main.min.css")
+    script(defer src="./assets/scripts/vendors.bundle.js")
+    script(defer src="./assets/scripts/index.bundle.js")
+    script(defer src="./assets/scripts/news_single.bundle.js") // Reusing the JS for sliders
+block scripts
+
+block header
+  include ../includes/header.pug
+
+block content
+  include ../components/construction-single/construction-section.pug
+  include ../components/construction-single/more-construction.pug
+
+block footer
+  include ../includes/footer.pug
+
+block modal 
+  include ../includes/form-popup.pug

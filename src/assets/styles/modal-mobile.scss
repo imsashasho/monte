@@ -1,0 +1,82 @@
+@use './assets/mixins' as *;
+@use './assets/vars' as *;
+
+.modal-mobile {
+  position: fixed;
+  height: var(--app-height);
+  width: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 999;
+  display: flex;
+  align-items: flex-end;
+  background: rgba(28, 28, 30, 0.5);
+  backdrop-filter: blur(50px);
+  -webkit-backdrop-filter: blur(30px);
+  opacity: 0;
+  visibility: hidden;
+  transition: all ease-in-out 0.4s;
+
+  &.active {
+    opacity: 1;
+    visibility: visible;
+    transition: all ease-in-out 0.4s;
+  }
+
+  &-inner {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--p40);
+  }
+
+  &-list {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    overflow: hidden;
+    gap: 8px;
+
+    @include mobile {
+      gap: 4px;
+    }
+  }
+
+  &-btn {
+    text-transform: uppercase;
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+    display: flex;
+    height: 68px;
+    padding: 24px 48px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    align-self: stretch;
+    border-radius: 100px;
+    background: var(--white);
+
+    span {
+      text-transform: uppercase;
+      font-weight: 600;
+    }
+
+    @include mobile {
+      padding: 18px 24px;
+      height: 54px;
+    }
+  }
+
+  &-btn--open {
+    position: relative;
+  }
+
+  &-btn--close {
+    background: transparent;
+    border: 1px solid #9c4b33;
+  }
+}

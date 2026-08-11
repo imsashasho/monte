@@ -1,0 +1,177 @@
+@use '../assets/mixins' as *;
+@use '../assets/vars' as *;
+
+.faq {
+  padding: vw(120, 1920) 0 vw(140, 1920);
+  background: var(--white);
+
+  @include tablet {
+    padding: 0;
+  }
+
+  &__shell {
+    display: flex;
+    align-items: start;
+    justify-content: space-between;
+    padding: vw(60, 1920) vw(40, 1920);
+
+    @include tablet {
+      flex-direction: column;
+      padding: vw(60, 768) vw(20, 768);
+      gap: vw(20, 768);
+    }
+
+    @include mobile {
+      flex-direction: column;
+      padding: 0 vw(12, 375);
+      gap: vw(12, 375);
+    }
+  }
+
+  &__title {
+    position: sticky;
+    top: vw(120, 1920);
+
+    @include tablet {
+      position: static;
+
+      text-transform: uppercase;
+      // Use negative margin to slightly pull the list up just in case, or naturally flow
+    }
+    br {
+      @include tablet {
+        display: none;
+      }
+    }
+  }
+
+  &__list {
+    width: vw(910, 1920);
+
+    @include tablet {
+      width: 100%;
+    }
+  }
+}
+
+.faq-item {
+  border-bottom: 1px solid var(--body);
+  padding: vw(20, 1920) 0;
+
+  @include tablet {
+    padding: vw(20, 768) 0;
+  }
+
+  @include mobile {
+    padding: vw(16, 375) 0;
+  }
+
+  &__trigger {
+    width: 100%;
+    border: 0;
+    background: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: vw(24, 1920);
+    text-align: left;
+    cursor: pointer;
+    padding: 0;
+
+    @include mobile {
+      gap: vw(16, 375);
+    }
+  }
+
+  &__question {
+    flex: 1;
+  }
+
+  &__icon {
+    position: relative;
+    flex-shrink: 0;
+    width: vw(48, 1920);
+    height: vw(48, 1920);
+
+    @include tablet {
+      width: vw(48, 768);
+      height: vw(48, 768);
+    }
+
+    @include mobile {
+      width: vw(48, 375);
+      height: vw(48, 375);
+    }
+
+    // Two bars drawn with pseudo-elements: horizontal + vertical = a plus.
+    // On `.is-open` the vertical bar collapses, leaving a minus.
+    &::before,
+    &::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      background: var(--black);
+      transition: transform var(--transition);
+    }
+
+    &::before {
+      width: 50%;
+      height: 2px;
+      transform: translate(-50%, -50%);
+    }
+
+    &::after {
+      width: 2px;
+      height: 50%;
+      transform: translate(-50%, -50%);
+    }
+  }
+
+  &__content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.35s ease;
+    will-change: max-height;
+  }
+
+  &__answer {
+    padding-top: vw(14, 1920);
+    width: vw(760, 1920);
+
+    @include tablet {
+      padding-top: vw(12, 768);
+      width: 100%;
+    }
+
+    @include mobile {
+      padding-top: vw(12, 375);
+    }
+  }
+
+  &__points {
+    margin: vw(10, 1920) 0 0;
+    padding-left: vw(20, 1920);
+    display: flex;
+    flex-direction: column;
+    gap: vw(2, 1920);
+    max-width: vw(760, 1920);
+
+    @include mobile {
+      margin: vw(8, 375) 0 0;
+      padding-left: vw(16, 375);
+      max-width: 100%;
+    }
+  }
+
+  &__point {
+    list-style: disc;
+  }
+
+  &.is-open {
+    // Collapse the vertical bar → the plus becomes a minus.
+    .faq-item__icon::after {
+      transform: translate(-50%, -50%) scaleY(0);
+    }
+  }
+}

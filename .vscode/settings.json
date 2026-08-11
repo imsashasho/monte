@@ -1,0 +1,12 @@
+{
+  "[pug]": {
+    "editor.insertSpaces": false,
+    "editor.tabSize": 2,
+    "editor.detectIndentation": false
+  },
+  "[jade]": {
+    "editor.insertSpaces": false,
+    "editor.tabSize": 2,
+    "editor.detectIndentation": false
+  }
+}

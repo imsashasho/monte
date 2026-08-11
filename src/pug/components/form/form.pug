@@ -1,0 +1,34 @@
+mixin form(attr, close, text)
+  .form-content 
+    .form-wrapper(data-form-wrapper)
+      if close
+        .form-popup-close(data-form-popup-close)
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+            <path d="M4.05176 3.83984L7.67676 7.52832L11.2607 3.88379L12.3125 4.95312L8.72852 8.59863L12.3125 12.2432L11.2607 13.3135L7.67676 9.66895L4.05176 13.3564L3 12.2861L6.625 8.59863L3 4.91016L4.05176 3.83984Z" fill="#1c1c1e"/>
+          </svg>
+      form(data-form=attr autocomplete="off").form
+        .form-inner
+          if text
+            .form-popup-info
+              if text.title
+                h3.form-popup-info__title.text-h3= text.title
+              if text.descr
+                p.form-popup-info__descr.text-body= text.descr
+
+          .form-fields-wrap
+            .form-field.form-field-input(data-field-input data-field-name data-status="field--inactive" data-before="")
+              input(type='text' name="name" placeholder="Введіть ім'я").form-field__input
+              .input-message(data-input-message)
+            .form-field.disabled.form-field-input(data-field-input data-field-phone data-status="field--inactive" data-before="")
+              input(type='tel' name="phone" placeholder="").form-field__input
+              .input-message(data-input-message)
+            .form-field.form-field-input(data-field-input data-field-email data-status="field--inactive" data-before="")
+              input(type='email' name="email" placeholder="Введіть email").form-field__input
+              .input-message(data-input-message)
+        button(type="submit" data-btn-submit).button-arrow
+          span.text-button.text-blue(data-btn-submit-text)= text && text.btn ? text.btn : 'Надіслати повідомлення'
+        
+        if text
+          .form-popup-info
+            if text.privacy
+              p.form-popup-info__privacy.text-body= text.privacy

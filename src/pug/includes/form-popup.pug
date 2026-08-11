@@ -1,0 +1,8 @@
+.form-popup(data-form-popup data-lenis-prevent)
+    .form-popup-inner
+        .form-popup-success(data-success)
+            p.form-popup-success__title.text-h3 Дякуємо за звернення!
+            p.form-popup-success__text.text-body Ми зв'яжемось з вами через декілька хвилин
+            img(src="/assets/images/icons/success.svg", alt="Handshake icon").form-popup-success__img
+            button.form-popup-success__button.text-button(data-form-popup-close) Закрити
+        +form('contact', close=true, { title: 'Зворотній дзвінок', descr: 'Бажаєте дізнатися про вигідні умови розтермінування або актуальні знижки? Залиште заявку, і ми розповімо про всі доступні варіанти.' })

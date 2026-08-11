@@ -1,0 +1,78 @@
+-
+  const newsMoreSlides = [
+    {
+      img: '/assets/images/news-card-1.png',
+      label:'Акція',
+      title:'Riverside відкриває продаж нової черги',
+      date: '06.08.2025'
+    },
+    {
+      img: '/assets/images/news-card-2.png',
+      label:'Акція',
+      title:'Спеціальні умови придбання для перших резидентів Riverside',
+      date: '06.08.2025'
+    },
+    {
+      img: '/assets/images/news-card-3.png',
+      label:'Акція',
+      title:'У Riverside стартував новий етап будівельних робіт ',
+      date: '06.08.2025'
+    },
+    {
+      img: '/assets/images/news-card-1.png',
+      label:'Акція',
+      title:'Riverside відкриває продаж нової черги',
+      date: '06.08.2025'
+    },
+  ]
+
+section.news-more#news-more-more
+  .news-more-title-cards-block
+    .news-more-title-buttons-block
+      h2.news-more-title.text-h1.text-black(parallax-text) Останні Новини та акції
+
+      .swiper-buttons 
+        button(type="button").swiper-buttons-prev(data-news-more-prev)
+          <svg xmlns="http://www.w3.org/2000/svg" width="100" height="60" viewBox="0 0 100 60" fill="none">
+            <g clip-path="url(#clip0_6239_3254)">
+              <path d="M-0.205078 26.665V34.1533L50.1943 60.001V49.5615L21.5449 35.001H100V26.001H22.0332L50.1943 11.6895V0.457031L-0.205078 26.665Z" fill="#160F10"/>
+            </g>
+            <defs>
+              <clipPath id="clip0_6239_3254">
+                <rect width="100" height="60" fill="white" transform="matrix(-1 0 0 1 100 0)"/>
+              </clipPath>
+            </defs>
+          </svg>
+        button(type="button").swiper-buttons-next(data-news-more-next)
+          <svg xmlns="http://www.w3.org/2000/svg" width="100" height="60" viewBox="0 0 100 60" fill="none">
+            <g clip-path="url(#clip0_6239_3257)">
+              <path d="M100.205 26.665V34.1533L49.8057 60.001V49.5605L78.4551 35.001H0V26.001H77.9668L49.8057 11.6895V0.457031L100.205 26.665Z" fill="#160F10"/>
+            </g>
+            <defs>
+              <clipPath id="clip0_6239_3257">
+                <rect width="100" height="60" fill="white"/>
+              </clipPath>
+            </defs>
+          </svg>
+  
+  .swiper.news-more-swiper(data-news-more-swiper)
+    ul.swiper-wrapper.news-more-swiper-wrapper(data-list)
+      each slide in newsMoreSlides
+        li.swiper-slide.news-swiper-item
+          a(href="/news-single.html" aria-label="Link to the single news page").news-swiper-card-link
+            .news-swiper-img-block
+              img(src=slide.img, alt="Swiper news image")
+
+            .news-swiper-text-block
+              p.news-swiper-title.text-subtitle-bold.text-h4=slide.title
+
+              .news-swiper-link-data-block
+                span.news-swiper-link.text-button.text-white Переглянути
+
+                .news-swiper-data-block
+                  .news-swiper-icon-block
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                      <path d="M5 1.39844C4.66863 1.39844 4.40039 1.66668 4.40039 1.99805V2.39844H3.33301C2.3156 2.3986 1.40039 3.16635 1.40039 4.2207V12.7754C1.40039 13.8297 2.3156 14.5975 3.33301 14.5977H12.667C13.6844 14.5975 14.5996 13.8297 14.5996 12.7754V4.2207C14.5996 3.16635 13.6844 2.3986 12.667 2.39844H11.5996V1.99805C11.5996 1.66668 11.3314 1.39844 11 1.39844C10.6686 1.39844 10.4004 1.66668 10.4004 1.99805V2.39844H5.59961V1.99805C5.59961 1.66668 5.33137 1.39844 5 1.39844ZM12.667 3.59766C13.122 3.59781 13.4004 3.92521 13.4004 4.2207V6.39844H2.59961V4.2207C2.59961 3.92521 2.87798 3.59781 3.33301 3.59766H4.40039V3.99805C4.40039 4.32942 4.66863 4.59766 5 4.59766C5.33137 4.59766 5.59961 4.32942 5.59961 3.99805V3.59766H10.4004V3.99805C10.4004 4.32942 10.6686 4.59766 11 4.59766C11.3314 4.59766 11.5996 4.32942 11.5996 3.99805V3.59766H12.667Z" fill="#160F10"/>
+                    </svg>
+                  p.news-swiper-data.text-button= slide.date
+                  

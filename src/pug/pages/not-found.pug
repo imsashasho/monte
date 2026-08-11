@@ -1,0 +1,64 @@
+
+extends ../layout/main
+
+block variable
+  -
+    var title_page = 'not-found'
+    var id_page = 'not-found'
+    var class_page = 'not-found'
+
+block meta
+  title= 'Riverside Uman'
+  meta(name='description', content='')
+block head
+    link(rel='stylesheet', href="./assets/styles/main.min.css")
+    script(defer src="./assets/scripts/vendors.bundle.js")
+    script(defer src="./assets/scripts/index.bundle.js")
+    script(defer src="./assets/scripts/not_found.bundle.js")
+block scripts
+
+block header
+  include ../includes/header.pug
+
+block content
+  section.not-found#not-found 
+    .not-found-img-block 
+      img(src="/assets/images/advantage.png", alt="Hero image with beautiful house")
+
+    .not-found-content
+      .not-found-left
+        img(src="/assets/images/Smile.png", alt="Smile")
+
+      .not-found-right
+        h2.not-found-title.text-h3 Упс, здається <br/> сторінка поки <br/> недоступна
+
+        .not-found-text-links-block
+          .not-found-text-logo-block 
+            p.not-found-text.text-h4 Ми поки що не розуміємо що трапилось, але скоро це пофіксимо
+
+            <svg class="not-found-logo" xmlns="http://www.w3.org/2000/svg" width="34" height="21" viewBox="0 0 34 21" fill="none">
+              <path d="M0 0V20.9531H13.6266V18.7031H2.53125V11.3484V9.09844V2.25H13.6266V0H0Z" fill="white"/>
+              <path d="M18.4002 20.9531V12.7266V10.4766V0H26.1768C28.3611 0 30.0908 0.571875 31.3658 1.71563C32.6502 2.85 33.2924 4.39687 33.2924 6.35625C33.2924 7.84688 32.8893 9.10781 32.083 10.1391C31.2861 11.1703 30.2033 11.8969 28.8346 12.3188L33.5455 20.9531H30.5924L26.1768 12.7266C26.1111 12.7266 26.0455 12.7266 25.9799 12.7266H20.9314V20.9531H18.4002ZM20.9314 10.4766H26.1205C27.5736 10.4766 28.7127 10.1109 29.5377 9.37969C30.3721 8.63906 30.7893 7.63125 30.7893 6.35625C30.7893 5.08125 30.3674 4.07812 29.5236 3.34687C28.6893 2.61563 27.5455 2.25 26.0924 2.25H20.9314V10.4766Z" fill="white"/>
+              <path d="M7.2002 12.7266V10.4766H18.4002V12.7266H7.2002Z" fill="white"/>
+            </svg>
+          
+          .not-found-links-block 
+            a(href="/").not-found-link
+              span На головну
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                <path d="M3.00006 2.3432L13.6569 2.3432L13.6569 13.0001M13.6569 2.3432L2.34322 13.6569" stroke="white" stroke-width="2"/>
+              </svg>
+            
+            a(href="https://3d-riverside.smarto.com.ua").not-found-link 
+              span Обрати квартиру
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                <path d="M3.00006 2.3432L13.6569 2.3432L13.6569 13.0001M13.6569 2.3432L2.34322 13.6569" stroke="white" stroke-width="2"/>
+              </svg>
+
+
+
+block modal
+  include ../includes/form-popup.pug
+
+
+

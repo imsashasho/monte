@@ -1,0 +1,79 @@
+@use '../assets/mixins' as *;
+@use '../assets/vars' as *;
+.title {
+  &-group-wrap {
+    display: flex;
+    flex-direction: column;
+    gap: var(--g40);
+
+    @include tablet {
+      gap: vw(40, 768);
+    }
+  }
+  &-group {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: var(--p20);
+
+    @include tablet {
+      padding-bottom: vw(16, 768);
+    }
+    @include mobile {
+      padding-bottom: vw(16, 375);
+    }
+
+    &::after {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      content: '';
+      display: block;
+      width: 100%;
+      height: vw(1, 1920);
+      background: rgba(255, 255, 255, 0.2);
+    }
+    svg {
+      width: vw(22, 1920);
+      height: vw(22, 1920);
+      flex-shrink: 0;
+
+      @include tablet {
+        width: vw(22, 768);
+        height: vw(22, 768);
+      }
+
+      @include mobile {
+        width: vw(22, 375);
+        height: vw(22, 375);
+      }
+    }
+  }
+}
+
+.title-swiper-nav {
+  display: flex;
+  align-items: center;
+  gap: var(--g12);
+}
+
+.title-swiper-button {
+  &.swiper-button-disabled {
+    opacity: 0.5;
+  }
+  svg {
+    width: vw(24, 1920);
+    height: vw(24, 1920);
+    flex-shrink: 0;
+
+    @include tablet {
+      width: vw(24, 768);
+      height: vw(24, 768);
+    }
+
+    @include mobile {
+      width: vw(24, 375);
+      height: vw(24, 375);
+    }
+  }
+}

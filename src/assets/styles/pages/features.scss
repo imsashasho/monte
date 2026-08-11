@@ -1,0 +1,617 @@
+@use '../assets/mixins' as *;
+@use '../assets/vars' as *;
+
+.features {
+  position: relative;
+  padding: vw(110, 1920) 0 vw(140, 1920);
+  background: var(--white);
+
+  @include tablet {
+    padding: 0;
+  }
+
+  &__shell {
+    padding: 0 vw(40, 1920);
+
+    @include tablet {
+      padding: 0 vw(20, 768);
+    }
+
+    @include mobile {
+      padding: 0 vw(12, 375);
+    }
+  }
+
+  &-stats {
+    display: flex;
+    gap: vw(20, 1920);
+    margin-top: vw(300, 1920);
+
+    @include tablet {
+      flex-direction: column;
+      gap: vw(20, 375);
+      margin-top: vw(80, 375);
+    }
+
+    &__side {
+      display: flex;
+      flex-direction: column;
+      gap: vw(20, 1920);
+      width: vw(600, 1920);
+
+      @include tablet {
+        width: 100%;
+        gap: vw(20, 768);
+      }
+
+      @include mobile {
+        gap: vw(20, 375);
+      }
+    }
+
+    &__lead {
+      max-width: vw(500, 1920);
+      opacity: 0.9;
+
+      @include tablet {
+        max-width: none;
+      }
+    }
+
+    &__accent {
+      max-width: vw(500, 1920);
+
+      @include tablet {
+        max-width: none;
+        // margin-top: vw(15, 768);
+      }
+
+      // @include mobile {
+      //   margin-top: vw(15, 375);
+      // }
+    }
+
+    &__cards {
+      display: flex;
+      gap: vw(7, 1920);
+
+      @include tablet {
+        position: relative;
+        height: vw(440, 375);
+        width: 100%;
+      }
+
+      // Планшет: висоту рахує featuresStatsAnim.js — це те, що лишилось у
+      // вьюпорті під запіненим __side. Телефонні 117vw тут не влазять.
+      // Фолбек потрібен, якщо скрипт не піднявся.
+      @include from-to(768px, 1024px) {
+        height: var(--stats-cards-h, #{vw(360, 768)});
+      }
+    }
+  }
+
+  &-stats-card {
+    border-radius: vw(40, 1920);
+    border: 1px solid var(--Body, #d8d8d8);
+    background: var(--White, #f1f1f2);
+    overflow: hidden;
+    height: vw(600, 1920);
+    width: vw(402, 1920);
+    display: flex;
+    flex-direction: column;
+
+    @include tablet {
+      position: absolute;
+      inset: 0;
+      height: vw(300, 768);
+      width: 100%;
+      border-radius: vw(40, 768);
+      flex-direction: row;
+      align-items: stretch;
+      padding: vw(4, 375);
+    }
+
+    @include mobile {
+      height: 100%;
+      border-radius: vw(16, 375);
+      will-change: auto;
+      transform: none;
+      flex-direction: column;
+    }
+
+    // @include from-to(768px, 1024px) {
+    //   height: 100%;
+    // }
+
+    &__media {
+      height: vw(296, 1920);
+      width: vw(394, 1920);
+      margin-top: vw(4, 1920);
+      overflow: hidden;
+      border-radius: vw(38, 1920);
+      align-self: center;
+
+      @include tablet {
+        height: vw(290, 768);
+        width: vw(360, 768);
+        margin-top: 0;
+        border-radius: vw(38, 768);
+      }
+
+      @include mobile {
+        width: calc(100% - #{vw(8, 375)});
+        height: vw(260, 375);
+        margin: vw(4, 375) auto 0;
+        border-radius: vw(12, 375);
+      }
+
+      // Картка тут гумова, тому медіа тягнеться по її висоті, а не по фіксованій
+      // vw(290, 768) — інакше або обрізається, або лишає щілину.
+      @include from-to(768px, 1024px) {
+        height: auto;
+        align-self: stretch;
+      }
+
+      img {
+        width: 100%;
+        height: 100%;
+        display: block;
+        object-fit: cover;
+        object-position: center;
+      }
+    }
+
+    &__body {
+      position: relative;
+      display: flex;
+      flex: 1;
+      flex-direction: column;
+      padding: vw(28, 1920);
+
+      @include tablet {
+        padding: vw(20, 768);
+      }
+
+      @include mobile {
+        padding: vw(20, 375);
+      }
+    }
+
+    &__title {
+      margin-bottom: vw(8, 1920);
+
+      @include tablet {
+        margin-bottom: vw(8, 768);
+      }
+
+      @include mobile {
+        margin-bottom: vw(4, 375);
+      }
+    }
+
+    .features-card__deco {
+      right: vw(28, 1920);
+      bottom: vw(28, 1920);
+
+      @include tablet {
+        right: vw(20, 768);
+        bottom: vw(20, 768);
+        width: vw(28, 768);
+        height: vw(28, 768);
+      }
+
+      @include mobile {
+        right: vw(20, 375);
+        bottom: vw(20, 375);
+        width: vw(24, 375);
+        height: vw(24, 375);
+      }
+    }
+  }
+}
+
+.features-stack {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: vw(20, 1920);
+  margin-top: vw(60, 1920);
+
+  @include tablet {
+    flex-direction: column;
+    gap: vw(20, 375);
+    margin-top: vw(60, 375);
+  }
+
+  // `tablet` тягнеться до 1024, тож телефонні vw(60, 375) дають тут 164px.
+  // GSAP копіює цей margin на .pin-spacer (інакше layout стрибнув би, коли блок
+  // стає fixed), і перед запіненим стеком з'являється велика порожнеча.
+  // 40 / 768 → 40px на 768, 53px на 1024.
+  @include from-to(768px, 1024px) {
+    margin-top: vw(40, 768);
+  }
+
+  &__side {
+    position: relative;
+    align-self: start;
+    display: flex;
+    flex-direction: column;
+    gap: vw(20, 1920);
+
+    @include tablet {
+      width: 100%;
+    }
+
+    .text-subtitle {
+      width: vw(420, 1920);
+
+      @include tablet {
+        width: auto;
+      }
+    }
+  }
+
+  &__title {
+    width: vw(410, 1920);
+
+    @include tablet {
+      width: auto;
+    }
+  }
+
+  &__cards {
+    position: relative;
+    width: vw(1220, 1920);
+    height: vw(500, 1920);
+
+    @include tablet {
+      width: 100%;
+    }
+
+    @include tablet {
+      height: vw(440, 375);
+    }
+  }
+
+  &--mirror {
+    grid-template-columns: 1fr vw(420, 1920);
+
+    @include tablet {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .features-stack__side {
+      order: 2;
+      justify-self: end;
+      text-align: left;
+
+      @include tablet {
+        order: 0;
+      }
+    }
+
+    .features-stack__cards {
+      order: 1;
+
+      @include tablet {
+        order: 1;
+      }
+    }
+
+    .features-card {
+      flex-direction: row-reverse;
+
+      @include mobile {
+        flex-direction: column-reverse;
+      }
+    }
+
+    .features-card__body {
+      padding: vw(28, 1920) vw(34, 1920) vw(48, 1920) vw(26, 1920);
+
+      @include tablet {
+        padding: vw(20, 768);
+      }
+      @include mobile {
+        padding: vw(20, 375);
+      }
+    }
+
+    .features-card__deco {
+      left: vw(22, 1920);
+      right: auto;
+
+      @include tablet {
+        left: vw(20, 768);
+        right: auto;
+      }
+
+      @include mobile {
+        left: auto;
+        right: vw(20, 375);
+      }
+    }
+  }
+}
+
+.features-card {
+  position: absolute;
+  inset: 0;
+  align-self: stretch;
+  display: flex;
+  align-items: stretch;
+  width: 100%;
+  height: 100%;
+  border-radius: vw(40, 1920);
+  border: 1px solid var(--Body, #d8d8d8);
+  background: var(--White, #f1f1f2);
+  overflow: hidden;
+
+  // Non-first cards live below viewport until GSAP animates them in.
+  // 1025, а не 1024: на 1024 вже діє планшетний `tablet`, і стартову позицію там
+  // задає JS (yPercent), а не цей transform.
+  &:not(:first-child) {
+    @media (min-width: 1025px) {
+      transform: translateY(100vh);
+    }
+  }
+
+  @include tablet {
+    border-radius: vw(40, 768);
+    height: fit-content;
+    padding: vw(4, 375);
+  }
+
+  @include mobile {
+    flex-direction: column;
+    border-radius: vw(16, 375);
+  }
+
+  &__media {
+    flex: 0 0 vw(882, 1920);
+    width: vw(882, 1920);
+    height: vw(492, 1920);
+    overflow: hidden;
+    border-radius: vw(38, 1920);
+    align-self: center;
+    margin-left: vw(4, 1920);
+
+    @include tablet {
+      flex: 0 0 vw(440, 768);
+      width: vw(440, 768);
+      height: vw(492, 768);
+      margin: 0;
+      align-self: flex-start;
+      border-radius: vw(38, 768);
+    }
+
+    @include mobile {
+      flex: none;
+
+      width: calc(100% - #{vw(8, 375)});
+
+      height: vw(220, 375);
+      border-radius: vw(12, 375);
+    }
+
+    img {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: cover;
+      object-position: center;
+    }
+  }
+
+  &__body {
+    position: relative;
+    flex: 1;
+    min-width: 0;
+    padding: vw(40, 1920);
+    width: vw(330, 1920);
+
+    @include tablet {
+      padding: vw(20, 768);
+      width: vw(330, 768);
+    }
+
+    @include mobile {
+      width: 100%;
+      padding: vw(20, 375);
+    }
+  }
+
+  &__name {
+    margin-bottom: vw(8, 1920);
+  }
+
+  &__desc {
+    max-width: vw(330, 1920);
+    opacity: 0.84;
+
+    @include tablet {
+      max-width: none;
+    }
+  }
+
+  &__deco {
+    position: absolute;
+    right: vw(40, 1920);
+    bottom: vw(40, 1920);
+    width: vw(28, 1920);
+    height: vw(28, 1920);
+    opacity: 0.62;
+
+    @include tablet {
+      right: vw(20, 768);
+      bottom: vw(20, 768);
+      width: vw(28, 768);
+      height: vw(28, 768);
+    }
+
+    @include mobile {
+      right: vw(20, 375);
+      bottom: vw(20, 375);
+      width: vw(24, 375);
+      height: vw(24, 375);
+    }
+  }
+
+  &__deco svg {
+    width: 100%;
+    height: 100%;
+    display: block;
+
+    @include mobile {
+      display: none;
+    }
+  }
+}
+
+.features-infrastructure {
+  padding: vw(160, 1920) 0 0 0;
+
+  @include tablet {
+    padding: vw(60, 375) 0 0 0;
+  }
+
+  &-inner {
+    display: flex;
+    gap: vw(60, 1920);
+
+    @include tablet {
+      flex-direction: column-reverse;
+      gap: vw(20, 375);
+    }
+  }
+
+  &-title {
+    width: vw(560, 1920);
+    display: flex;
+    flex-direction: column;
+    gap: vw(20, 1920);
+
+    @include tablet {
+      width: 100%;
+      gap: vw(12, 375);
+    }
+  }
+
+  &-list {
+    position: relative;
+    width: vw(1220, 1920) !important;
+    height: vw(700, 1920) !important;
+
+    border-radius: vw(38, 1920);
+
+    @include tablet {
+      border-radius: 0;
+      width: 100% !important;
+      height: vw(580, 768) !important; // Fixed height for absolute stacked cards with long text
+    }
+
+    @include mobile {
+      height: vw(580, 375) !important; // Fixed height for absolute stacked cards with long text
+
+      width: 100% !important;
+    }
+  }
+
+  &-item {
+    position: absolute;
+    inset: 0;
+    align-self: stretch;
+    padding: vw(40, 1920);
+    border-radius: vw(38, 1920);
+    overflow: hidden;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-start;
+    will-change: transform, opacity;
+
+    @include tablet {
+      border-radius: vw(38, 768);
+      padding: 0;
+      height: vw(537, 768);
+      width: 100%;
+    }
+
+    @include mobile {
+      height: fit-content;
+      width: 100%;
+      padding: 0;
+      border-radius: vw(16, 375);
+      flex-direction: column;
+      align-items: stretch;
+      justify-content: flex-start;
+    }
+  }
+
+  &-item__media {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+
+    @include mobile {
+      position: relative;
+      flex: none;
+      width: 100%;
+      height: vw(200, 375);
+    }
+  }
+
+  &-item__body {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: vw(20, 1920);
+    padding: vw(40, 1920);
+    background: var(--white);
+    width: vw(400, 1920);
+    border-radius: vw(28, 1920);
+
+    @include tablet {
+      position: absolute;
+      top: vw(4, 768);
+      left: vw(4, 768);
+      width: vw(340, 768);
+      border-radius: vw(36, 768);
+      padding: vw(20, 768);
+      gap: vw(8, 768);
+    }
+
+    @include mobile {
+      position: relative;
+      top: auto;
+      left: auto;
+      width: 100%;
+      border-radius: vw(18, 375);
+      padding: vw(12, 375);
+      gap: vw(4, 375);
+      border: 1px solid var(--Body, #d8d8d8);
+    }
+  }
+
+  &-item__body-list {
+    display: flex;
+    flex-direction: column;
+    gap: vw(8, 1920);
+    list-style: disc;
+    padding-left: vw(20, 1920);
+
+    @include mobile {
+      gap: vw(4, 375);
+      padding-left: vw(16, 375);
+    }
+  }
+
+  &-item__body-list-item {
+    position: relative;
+    list-style: disc;
+  }
+}

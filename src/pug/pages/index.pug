@@ -1,0 +1,46 @@
+
+extends ../layout/main
+block variable
+  -
+    var title_page = 'Riverside Uman'
+    var id_page = 'index'
+    var class_page = 'index'
+
+block meta
+  title= 'Riverside Uman'
+  meta(name='description', content='')
+block head
+    link(rel='stylesheet', href="./assets/styles/main.min.css")
+    script(defer src="./assets/scripts/vendors.bundle.js")
+    script(defer src="./assets/scripts/index.bundle.js")
+    script(defer src="./assets/scripts/homepage.bundle.js")
+block scripts
+
+block header
+  include ../includes/header.pug
+  
+
+block content
+  .container
+    include ../components/homepage/hero.pug
+    include ../components/homepage/about.pug
+    //- include ../components/homepage/location.pug
+    include ../components/homepage/advantages.pug
+    include ../components/homepage/features.pug
+    include ../components/homepage/investment.pug
+    include ../components/homepage/gallery.pug
+    include ../components/homepage/construction.pug
+    include ../components/homepage/news.pug
+    include ../components/homepage/faq.pug
+
+block footer
+  include ../includes/footer.pug
+
+block modal 
+  include ../includes/form-popup.pug
+  include ../includes/modal-mobile.pug
+  include ../includes/popup-construction.pug
+
+
+    
+  

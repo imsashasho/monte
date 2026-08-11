@@ -1,0 +1,154 @@
+mixin featuresStack(modifier, title, subtitle)
+	.features-stack(class=modifier)
+		.features-stack__side
+			h3.features-stack__title.text-h2.text-black(parallax-text)= title
+			span.text-subtitle.text-black= subtitle
+
+		.features-stack__cards
+			block
+
+mixin featuresDeco()
+	.features-card__deco(aria-hidden='true')
+		svg(xmlns='http://www.w3.org/2000/svg' width='28' height='28' viewBox='0 0 28 28' fill='none')
+			path(d='M28 14L22.2613 8.26126L26.7387 3.78378L24.2162 1.26126L19.7387 5.73874L14 0L8.26127 5.73874L3.7838 1.26126L1.26127 3.78378L5.73873 8.26126L0 14L5.73873 19.7387L1.26127 24.2162L3.7838 26.7387L8.26127 22.2613L14 28L19.7387 22.2613L24.2162 26.7387L26.7387 24.2162L22.2613 19.7387L28 14ZM22.8919 14L19.6757 17.2162L16.4595 14L19.6757 10.7838L22.8919 14ZM13.9369 5.04505L17.1532 8.26126L13.9369 11.4775L10.7207 8.26126L13.9369 5.04505ZM4.98199 14L8.19821 10.7838L11.4144 14L8.19821 17.2162L4.98199 14ZM13.9369 22.955L10.7207 19.7387L13.9369 16.5225L17.1532 19.7387L13.9369 22.955Z' fill='#867668')
+
+section.features#features
+	.features__shell
+		.features__title
+			h2.text-h1.text-black(parallax-text) Переваги комплексу
+		+featuresStack('', 'Географічна та логістична перевага:')
+			.features-card
+				.features-card__media
+					img(src='/assets/images/features/features-1.jpg' alt='Серце Карпат')
+				.features-card__body
+					h4.features-card__name.text-h3-mulish.text-black «Серце Карпат»
+					p.features-card__desc.text-body.text-black Місто розташоване в міжгірній улоговині на березі річки Прут, оточене горами хребтів Ґорґани та Чорногора.
+					+featuresDeco()
+
+			.features-card
+				.features-card__media
+					img(src='/assets/images/features/features-2.jpg' alt='Близькість до Буковелю')
+				.features-card__body
+					h4.features-card__name.text-h3-mulish.text-black Близькість до Буковелю
+					p.features-card__desc.text-body.text-black Лише 35 км (30 хв на авто) до головного гірськолижного курорту країни. Це дозволяє інвесторам MONTE залучати потік туристів, які прагнуть преміального відпочинку без «шуму» великого курорту.
+					+featuresDeco()
+
+			.features-card
+				.features-card__media
+					img(src='/assets/images/features/features-3.jpg' alt='Транспортний вузол')
+				.features-card__body
+					h4.features-card__name.text-h3-mulish.text-black Транспортний вузол
+					p.features-card__desc.text-body.text-black Пряме залізничне сполучення з Києвом, Львовом та Одесою та розташування на автошляху Івано-Франківськ — Рахів — Ужгород роблять локацію максимально доступною для внутрішнього та іноземного туриста.
+					+featuresDeco()
+
+		+featuresStack('features-stack--mirror', 'Інфраструктурні магніти та «Slow Travel»', 'Яремче поєднує автентику з сучасним комфортом, що критично важливо для стабільної капіталізації об’єкта:')
+			.features-card
+				.features-card__media
+					img(src='/assets/images/features/features-4.jpg' alt='Професійне управління')
+				.features-card__body
+					h4.features-card__name.text-h3-mulish.text-black Точки тяжіння
+					p.features-card__desc.text-body.text-black Водоспад Пробій, Скелі Довбуша, оновлений ресторан-музей «Гуцульщина» та Карпатський національний природний парк.
+					+featuresDeco()
+
+			.features-card
+				.features-card__media
+					img(src='/assets/images/features/features-5.jpg' alt='Готовий продукт для оренди')
+				.features-card__body
+					h4.features-card__name.text-h3-mulish.text-black Цивілізація в горах
+					p.features-card__desc.text-body.text-black Наявність мережевих гігантів, як-от McDonald’s у центрі міста, свідчить про високу інвестиційну оцінку трафіку великим бізнесом.
+					+featuresDeco()
+
+			.features-card
+				.features-card__media
+					img(src='/assets/images/features/features-6.jpg' alt='Преміальна інфраструктура')
+				.features-card__body
+					h4.features-card__name.text-h3-mulish.text-black Всесезонність
+					p.features-card__desc.text-body.text-black На відміну від суто лижних локацій, Яремче приваблює туристів цілий рік завдяки хайкінгу, рафтингу та wellness-відпочинку.
+					+featuresDeco()
+
+		.features-stats
+			.features-stats__side
+				h3.features-stats__title.text-h2.text-black(parallax-text) Туристична складова
+				p.features-stats__lead.text-subtitle.text-black Яремче трансформується в сучасний європейський курорт, де автентична культура поєднується з інфраструктурою світового рівня та преміальними резиденціями, що робить його однією з найперспективніших локацій для туристичних інвестицій в Україні.
+				p.features-stats__accent.text-subtitle-bold.text-black Для інвесторів туристична перспектива конвертується у конкретні цифри:
+
+			.features-stats__cards
+				.features-stats-card
+					.features-stats-card__media
+						img(src='/assets/images/features/features-7.jpg' alt='Ріст відвідуваності')
+					.features-stats-card__body
+						h4.features-stats-card__title.text-h3-mulish.text-black Ріст відвідуваності
+						p.features-stats-card__desc.text-body.text-black Західні області фіксують зростання турпотоку на 30-40% щорічно.
+						+featuresDeco()
+
+				.features-stats-card
+					.features-stats-card__media
+						img(src='/assets/images/features/features-8.jpg' alt='Капіталізація')
+					.features-stats-card__body
+						h4.features-stats-card__title.text-h3-mulish.text-black Капіталізація
+						p.features-stats-card__desc.text-body.text-black Вартість нерухомості в Яремче прогнозовано зросте на 18% щороку.
+						+featuresDeco()
+
+				.features-stats-card
+					.features-stats-card__media
+						img(src='/assets/images/features/features-9.jpg' alt='Дохідність')
+					.features-stats-card__body
+						h4.features-stats-card__title.text-h3-mulish.text-black Дохідність
+						p.features-stats-card__desc.text-body.text-black Об’єкти під управлінням професійних операторів (до +/- Maestro Hotel Management) забезпечують інвесторам близько 10% річних за рахунок стабільного заповнення номерного фонду.
+						+featuresDeco()
+		.features-infrastructure 
+			.features-infrastructure-inner
+				.features-infrastructure-list 
+					.features-infrastructure-item
+						.features-infrastructure-item__media
+							img(src='/assets/images/features/features-10.jpg' alt='Wellness & SPA')
+						.features-infrastructure-item__body
+							h4.features-infrastructure-item__title.text-h3-mulish.text-black Оздоровлення та Wellness:
+							ul.features-infrastructure-item__body-list
+								li.features-infrastructure-item__body-list-item.text-body.text-black Зона джакузі: просторий майданчик площею для водних процедур.
+								li.features-infrastructure-item__body-list-item.text-body.text-black Сауна та контрастне відро: спеціалізовані зони для термічного відновлення.
+								li.features-infrastructure-item__body-list-item.text-body.text-black Спортзал: обладнана фітнес-зона площею.
+								li.features-infrastructure-item__body-list-item.text-body.text-black Тераса: відкрита для відпочинку на свіжому повітрі з панорамними видами.
+					.features-infrastructure-item
+						.features-infrastructure-item__media
+							img(src='/assets/images/features/features-11.jpg' alt='Гастрономія та комерція')
+						.features-infrastructure-item__body
+							h4.features-infrastructure-item__title.text-h3-mulish.text-black Гастрономія та комерція
+							span.text-body.text-black На першому поверсі комплексу зосереджені основні громадські та сервісні приміщення:
+							ul.features-infrastructure-item__body-list
+								li.features-infrastructure-item__body-list-item.text-body.text-black Ресторан: преміальний заклад із залом, власною кухнею та баром.
+								li.features-infrastructure-item__body-list-item.text-body.text-black Літня тераса ресторану: простора відкрита зона з видами на річку Прут та гірські схили.
+								li.features-infrastructure-item__body-list-item.text-body.text-black Лобі та Рецепція: вхідна група з дизайнерським оформленням та цілодобовою стійкою адміністрації.
+								li.features-infrastructure-item__body-list-item.text-body.text-black Комерційні приміщення: площі під бутики або сервісні заклади з окремими входами.
+					.features-infrastructure-item
+						.features-infrastructure-item__media
+							img(src='/assets/images/features/features-12.jpg' alt='Бізнес-інфраструктура')
+						.features-infrastructure-item__body
+							h4.features-infrastructure-item__title.text-h3-mulish.text-black Бізнес-інфраструктура
+							span.text-body.text-black Для ділових зустрічей та івентів передбачено зону, що містить:
+							ul.features-infrastructure-item__body-list
+								li.features-infrastructure-item__body-list-item.text-body.text-black  Конференц-зал (Лекторій): розрахований на 70 осіб для проведення презентацій та офіційних заходів.
+								li.features-infrastructure-item__body-list-item.text-body.text-black Другий зал: приміщення для камерних зустрічей або переговорів.
+								li.features-infrastructure-item__body-list-item.text-body.text-black Зона кейтерингу із виходом на власну терасу для організації фуршетів.
+					.features-infrastructure-item
+						.features-infrastructure-item__media
+							img(src='/assets/images/features/features-13.jpg' alt='Паркінг та безпека')
+						.features-infrastructure-item__body
+							h4.features-infrastructure-item__title.text-h3-mulish.text-black Паркінг та безпека
+							ul.features-infrastructure-item__body-list
+								li.features-infrastructure-item__body-list-item.text-body.text-black  Підземний багаторівневий паркінг: розрахований на 95 машиномісць із прямим доступом на ліфті до житлової та готельної частин.
+								li.features-infrastructure-item__body-list-item.text-body.text-black Зона укриття: приміщення подвійного призначення, розташоване на нижньому рівні паркінгу для гарантування максимальної безпеки.
+								li.features-infrastructure-item__body-list-item.text-body.text-black Система контролю доступу: розмежування потоків між мешканцями (MONTE Home), гостями (MONTE Apartments) та відвідувачами комерційних зон.
+					.features-infrastructure-item
+						.features-infrastructure-item__media
+							img(src='/assets/images/features/features-14.jpg' alt='Благоустрій території')
+						.features-infrastructure-item__body
+							h4.features-infrastructure-item__title.text-h3-mulish.text-black Благоустрій території'
+							span.text-body.text-black Зовнішній простір розділений на дві функціональні частини:
+							ul.features-infrastructure-item__body-list
+								li.features-infrastructure-item__body-list-item.text-body.text-black Житлова (приватна) зона: включає зону відпочинку з елементами озеленення та дитячий майданчик.
+								li.features-infrastructure-item__body-list-item.text-body.text-black Громадська зона: містить сухий фонтан як елемент ландшафтного дизайну та під'їзні шляхи з боку вул. Свободи.
+								li.features-infrastructure-item__body-list-item.text-body.text-black Комплекс спроєктовано з урахуванням принципів безбар’єрності: наявні пандуси, спеціальні ліфти та зручні вхідні групи для маломобільних груп населення.
+				.features-infrastructure-title
+					h3.features-infrastructure-title__text.text-h2.text-black(parallax-text) Інфраструктура комплексу
+					span.text-subtitle.text-black MONTE у Яремче спроєктований за 5-ти зірковими стандартами сервісу та комфорту, поєднуючи зони для активного відпочинку, оздоровлення та бізнесу.

@@ -1,0 +1,305 @@
+@use 'sass:math';
+
+@mixin font-face($font-family, $url, $weight: normal, $style: normal, $asset-pipeline: false) {
+  @font-face {
+    font-family: '#{$font-family}';
+    font-weight: #{$weight};
+    font-style: '#{$style}';
+
+    src: url('#{$url}.eot');
+    src:
+      url('#{$url}.eot?#iefix') format('embedded-opentype'),
+      url('#{$url}.woff') format('woff'),
+      url('#{$url}.ttf') format('truetype');
+  }
+}
+
+$xs: 767px;
+$sm: 1024px;
+$md: 1919px;
+
+@mixin media($size) {
+  @media (max-width: $size) {
+    @content;
+  }
+}
+
+@mixin mobile {
+  @include media($xs) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @include media($sm) {
+    @content;
+  }
+}
+
+@mixin tabletLarge {
+  @include media($md) {
+    @content;
+  }
+}
+
+// Function for converting a px based font-size to rem.
+@function rem($size) {
+  $remSize: math.div($size, 14px);
+  @return #{$remSize}rem;
+}
+
+@mixin toh($max_height) {
+  @media screen and (max-height: $max_height) {
+    @content;
+  }
+}
+
+@function max($numbers...) {
+  @return m#{a}x(#{$numbers});
+}
+
+@function min($numbers...) {
+  @return m#{i}n(#{$numbers});
+}
+
+$full-width: 1200;
+$work-width: 80;
+$screen-height: 720;
+
+@function vmax($pixels, $context: $full-width) {
+  @return #{math.div($pixels, $context) * 100}vmax;
+}
+
+@function vw($pixels, $context) {
+  @return math.div($pixels, $context) * 100vw;
+}
+
+@function lh($lh, $fz) {
+  @return #{math.div($lh, $fz)}em;
+}
+
+@mixin from($min_width) {
+  @media screen and (min-width: $min_width) {
+    @content;
+  }
+}
+
+@mixin to($max_width) {
+  @media screen and (max-width: $max_width) {
+    @content;
+  }
+}
+
+@mixin from-to($min_width, $max_width) {
+  @media screen and (min-width: $min_width) and (max-width: $max_width) {
+    @content;
+  }
+}
+
+@mixin u-row-flex($offset) {
+  display: flex;
+  flex-wrap: wrap;
+  margin-left: math.div($offset, -2);
+  margin-right: math.div($offset, -2);
+}
+
+@mixin u-col($offset) {
+  box-sizing: border-box;
+  word-wrap: break-word;
+  margin-left: math.div($offset, 2);
+  margin-right: math.div($offset, 2);
+}
+
+@mixin u-size($n, $columns, $offset) {
+  width: #{calc(100% / #{$columns} * #{$n} - #{$offset})};
+}
+
+@mixin reset() {
+  body,
+  div,
+  dl,
+  dt,
+  dd,
+  ul,
+  li,
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  pre,
+  code,
+  form,
+  fieldset,
+  input,
+  textarea,
+  p,
+  blockquote,
+  th,
+  td {
+    margin: 0;
+    padding: 0;
+  }
+
+  table {
+    border-collapse: collapse;
+    border-spacing: 0;
+  }
+
+  fieldset,
+  img,
+  abbr {
+    border: 0;
+  }
+
+  address,
+  caption,
+  cite,
+  code,
+  dfn,
+  em,
+  strong,
+  th,
+  var {
+    font-style: normal;
+    font-weight: normal;
+  }
+
+  ul li {
+    list-style: none;
+  }
+
+  caption,
+  th {
+    text-align: left;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-size: 100%;
+    font-weight: normal;
+  }
+
+  sup {
+    vertical-align: text-top;
+  }
+
+  sub {
+    vertical-align: text-bottom;
+  }
+
+  input,
+  textarea,
+  select {
+    font-family: inherit;
+    font-size: inherit;
+    font-weight: inherit;
+  }
+
+  legend {
+    color: #000;
+  }
+
+  article,
+  aside,
+  details,
+  figcaption,
+  figure,
+  footer,
+  header,
+  hgroup,
+  menu,
+  nav,
+  section,
+  main {
+    display: block;
+  }
+
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+}
+
+@mixin debug($background, $outline) {
+  height: 100vh;
+  position: fixed;
+  width: 100%;
+
+  > div {
+    height: inherit;
+    @include wrapper();
+
+    > div {
+      height: inherit;
+      @include row-flex();
+
+      > div {
+        @include col();
+        @include size(1);
+        height: inherit;
+        outline: $outline;
+        background: $background;
+      }
+    }
+  }
+}
+
+@mixin clearfix() {
+  &::after {
+    display: block;
+    content: '';
+    clear: both;
+  }
+}
+
+@mixin btn-nature-hover() {
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+
+  @include mobile {
+    display: flex;
+    height: vw(48, 375);
+    padding: vw(20, 375) vw(40, 375);
+    justify-content: center;
+    align-items: center;
+    gap: vw(16, 375);
+    border-radius: vw(8, 375);
+  }
+
+  span,
+  div {
+    position: relative;
+    z-index: 2;
+  }
+
+  &::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 150%;
+    height: 0%;
+    background: var(--purple);
+    transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+    z-index: -1;
+    border-radius: 50% 50% 0 0;
+  }
+
+  &:hover {
+    background-color: var(--accent) !important;
+    color: var(--white) !important;
+
+    &::before {
+      height: 200%;
+      border-radius: 0;
+    }
+  }
+}

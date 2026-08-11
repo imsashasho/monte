@@ -1,0 +1,609 @@
+@use '../assets/mixins' as *;
+@use '../assets/vars' as *;
+
+.investment {
+  position: relative;
+  overflow: hidden;
+  padding: vw(100, 1920) 0 0;
+  background: var(--white);
+
+  @include tablet {
+    padding: vw(60, 768) 0 0;
+  }
+
+  @include mobile {
+    padding: 0;
+  }
+
+  &__shell {
+    position: relative;
+    z-index: 1;
+    padding: 0 vw(40, 1920) vw(484, 1920) vw(40, 1920);
+
+    @include tablet {
+      padding: 0 vw(20, 768) vw(450, 768) vw(20, 768);
+    }
+
+    @include mobile {
+      padding: 0 vw(12, 375) vw(240, 375) vw(12, 375);
+    }
+  }
+
+  &__shell-logo-block {
+    display: flex;
+    border-top: 1px solid var(--body);
+    border-bottom: 1px solid var(--body);
+    padding: vw(60, 1920) vw(40, 1920) vw(120, 1920) vw(40, 1920);
+    margin-bottom: vw(200, 1920);
+    margin-top: vw(100, 1920);
+
+    @include tablet {
+      flex-direction: column;
+      align-items: center;
+      padding: vw(40, 768) 0;
+      margin-bottom: vw(500, 768);
+      margin-top: vw(60, 768);
+    }
+    @include mobile {
+      flex-direction: column;
+      align-items: center;
+      padding: vw(32, 375) 0;
+      margin-bottom: vw(300, 375);
+      margin-top: vw(60, 375);
+    }
+  }
+  &__shell-logo-sign {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: vw(100, 1920);
+    height: vw(100, 1920);
+
+    @include tablet {
+      width: vw(68, 768);
+      height: vw(68, 768);
+    }
+
+    @include mobile {
+      width: vw(48, 375);
+      height: vw(48, 375);
+    }
+  }
+
+  &__shell-logo {
+    position: relative;
+    z-index: 5;
+    width: 100%;
+    aspect-ratio: 1840 / 313;
+    overflow: hidden;
+
+    // During the reveal this block is pinned by GSAP (so it's already fixed to
+    // the viewport centre). We drop `overflow: hidden` so the frame inside can
+    // grow past the strip to fill the screen, and lift it above everything
+    // else scrolling behind it.
+    .investment--logo-reveal & {
+      overflow: visible;
+      z-index: 500;
+    }
+  }
+
+  &__shell-logo-frame {
+    // Centred inside the strip so the grow (width/height up to the full
+    // viewport) stays anchored on the strip's centre — which, because the strip
+    // is pinned at the viewport centre, is the viewport centre too. Absolute on
+    // every size because the JS effect now runs on every size; before it grows
+    // it simply fills the strip, so the static state looks identical.
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    height: 100%;
+    transform: translate(-50%, -50%);
+    overflow: hidden;
+  }
+
+  &__shell-logo-video {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  &__shell-logo-half {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    overflow: hidden;
+
+    img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    &--top {
+      clip-path: inset(0 0 50% 0);
+    }
+
+    &--bottom {
+      clip-path: inset(50% 0 0 0);
+    }
+  }
+
+  &__title {
+    padding-top: vw(200, 1920);
+    margin-bottom: vw(60, 1920);
+    position: relative;
+
+    @include tablet {
+      padding-top: vw(20, 768);
+      margin-bottom: vw(40, 768);
+    }
+
+    @include mobile {
+      padding-top: vw(100, 375);
+      margin-bottom: vw(40, 375);
+    }
+
+    &--attractiveness {
+      margin-top: vw(120, 1920);
+
+      @include tablet {
+        margin-top: vw(100, 768);
+      }
+
+      @include mobile {
+        margin-top: vw(0, 375);
+        margin-bottom: vw(20, 375);
+      }
+    }
+  }
+
+  &__proposals {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: vw(24, 1920);
+
+    @include tablet {
+      grid-template-columns: 1fr;
+      gap: vw(60, 375);
+    }
+  }
+
+  &__attractiveness-grid {
+    display: flex;
+    justify-content: space-between;
+
+    @include tablet {
+      flex-direction: column;
+      gap: vw(40, 375);
+    }
+  }
+
+  &__lead {
+    width: vw(654, 1920);
+
+    @include tablet {
+      width: 100%;
+    }
+  }
+
+  &__bg {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: vw(1160, 1920);
+    z-index: 0;
+
+    @include tablet {
+      height: vw(500, 375);
+    }
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: vw(250, 1920);
+      z-index: 1;
+      background: linear-gradient(
+        180deg,
+        rgba(241, 241, 242, 0) 0%,
+        rgba(241, 241, 242, 0.87) 86.54%,
+        #f1f1f2 100%
+      );
+      pointer-events: none;
+
+      @include tablet {
+        top: vw(-60, 375);
+        height: vw(315, 375);
+        background: linear-gradient(
+          0deg,
+          rgba(241, 241, 242, 0) 0%,
+          rgba(241, 241, 242, 0.87) 50.54%,
+          #f1f1f2 100%
+        );
+      }
+    }
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+
+      @include tablet {
+        object-position: -30vw bottom;
+      }
+    }
+  }
+}
+
+.investment-proposal-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: vw(20, 1920);
+
+  @include tablet {
+    gap: 0; // spacing handled by inner elements
+  }
+
+  &__media {
+    position: relative;
+    height: vw(640, 1920);
+    border-radius: vw(40, 1920);
+    overflow: hidden;
+    cursor: pointer;
+
+    // On hover: drawer opens + each stat item floats in with stagger
+    &:hover {
+      .investment-proposal-card__stats {
+        max-height: 600px;
+        opacity: 1;
+        transform: translateY(0);
+        transition:
+          max-height 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+          opacity 0.4s ease,
+          transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+      }
+
+      .investment-proposal-card__stat {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      &::before {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      img {
+        transform: scale(1.04);
+      }
+
+      &::after {
+        opacity: 0.95;
+      }
+    }
+
+    img {
+      transition: transform 0.7s cubic-bezier(0.25, 1, 0.5, 1);
+    }
+
+    &::after {
+      transition: opacity 0.4s ease;
+    }
+
+    @include tablet {
+      height: auto;
+      overflow: visible;
+    }
+
+    img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+
+      @include tablet {
+        height: vw(240, 375);
+        border-radius: vw(16, 375);
+      }
+    }
+
+    &::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.75) 100%);
+
+      @include tablet {
+        height: vw(240, 375);
+        border-radius: vw(16, 375);
+      }
+    }
+
+    &::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      background: linear-gradient(
+        180deg,
+        rgba(1, 1, 1, 0) 0%,
+        rgba(1, 1, 1, 0.7) 39.9%,
+        rgba(1, 1, 1, 0.98) 100%
+      );
+      opacity: 0;
+      transform: translateY(100%);
+      transition:
+        opacity 0.6s ease,
+        transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+
+      @include tablet {
+        display: none;
+      }
+    }
+  }
+
+  &__caption {
+    position: absolute;
+    z-index: 2;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: vw(40, 1920) vw(20, 1920);
+    gap: vw(16, 1920);
+
+    @include tablet {
+      position: relative;
+      height: auto;
+      padding: vw(240, 375) 0 0 0;
+      justify-content: flex-start;
+      gap: 0;
+    }
+  }
+
+  &__caption-title {
+    display: flex;
+    flex-direction: column;
+    gap: vw(8, 1920);
+
+    @include tablet {
+      gap: vw(4, 768);
+      top: vw(20, 768);
+      left: vw(20, 768);
+      position: absolute;
+    }
+
+    @include mobile {
+      position: absolute;
+      top: vw(20, 375);
+      left: vw(20, 375);
+      gap: vw(4, 375);
+      width: calc(100% - vw(40, 375));
+    }
+  }
+
+  &__body {
+    @include tablet {
+      padding: vw(20, 768);
+      gap: vw(20, 768);
+    }
+    @include mobile {
+      margin-top: vw(20, 375);
+    }
+  }
+
+  &__desc {
+    @include tablet {
+      color: var(--black) !important;
+    }
+  }
+
+  &__stats {
+    display: flex;
+    flex-direction: column;
+    gap: vw(16, 1920);
+
+    // Container opens like a smooth drawer and slides up
+    max-height: 0;
+    padding-top: vw(20, 1920); // Forms the gap neatly during max-height expansion
+    overflow: hidden;
+    opacity: 0;
+    box-sizing: border-box;
+    transform: translateY(vw(20, 1920));
+    transition:
+      max-height 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+      opacity 0.4s ease,
+      transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+
+    @include tablet {
+      max-height: 100%;
+      opacity: 1;
+      overflow: visible;
+      transition: none;
+      display: flex;
+      flex-direction: column;
+      gap: vw(16, 768);
+      margin-top: vw(20, 768);
+    }
+
+    @include mobile {
+      gap: vw(16, 375);
+      margin-top: vw(20, 375);
+    }
+  }
+
+  &__stat {
+    display: flex;
+    gap: vw(10, 1920);
+
+    // Each stat floats up individually — elegant cascade on reveal
+    opacity: 0;
+    transform: translateY(vw(30, 1920));
+    transition:
+      opacity 0.5s ease,
+      transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+
+    // Stagger delay per item
+    @for $i from 1 through 6 {
+      &:nth-child(#{$i}) {
+        transition-delay: #{($i - 1) * 0.07}s;
+      }
+    }
+
+    @include tablet {
+      opacity: 1;
+      transform: none;
+      transition: none;
+
+      gap: vw(20, 375);
+    }
+
+    &-label {
+      color: var(--white);
+      width: vw(180, 1920);
+
+      @include tablet {
+        color: var(--black);
+        width: vw(160, 768);
+      }
+
+      @include mobile {
+        width: vw(120, 375);
+      }
+    }
+
+    &-value {
+      color: var(--white);
+      flex: 1;
+
+      @include tablet {
+        color: var(--black);
+        flex: 1;
+      }
+    }
+  }
+
+  &__name {
+    text-transform: none;
+  }
+
+  &__tag {
+    // opacity: 0.8;
+  }
+
+  &__button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: vw(60, 1920);
+    padding: vw(20, 1920) vw(40, 1920);
+    background: var(--accent);
+    @include btn-nature-hover();
+    color: var(--white);
+    transition:
+      background-color var(--transition),
+      border-radius var(--transition);
+    border-radius: vw(8, 1920);
+
+    &:hover {
+      background: var(--purple);
+      border-radius: vw(100, 1920);
+    }
+
+    @include tablet {
+      margin-top: vw(40, 768);
+      min-height: vw(60, 768);
+      padding: vw(20, 768) vw(40, 768);
+      border-radius: vw(8, 768);
+    }
+
+    @include mobile {
+      margin-top: vw(24, 375);
+      min-height: vw(48, 375);
+      padding: vw(16, 375) vw(40, 375);
+      border-radius: vw(8, 375);
+    }
+  }
+}
+
+.investment-stats-group-wrap {
+  display: flex;
+  gap: vw(100, 1920);
+
+  @include tablet {
+    gap: vw(40, 768);
+  }
+
+  @include mobile {
+    flex-direction: column;
+    gap: vw(40, 375);
+  }
+}
+
+.investment-stats-group {
+  display: flex;
+  flex-direction: column;
+  gap: vw(24, 1920);
+  width: vw(400, 1920);
+
+  &:last-child {
+    width: vw(300, 1920);
+    margin-right: vw(110, 1920);
+
+    @include tablet {
+      width: 50%;
+      margin-right: 0;
+    }
+
+    @include mobile {
+      width: 100%;
+      margin-right: 0;
+    }
+  }
+
+  @include tablet {
+    width: 50%;
+    gap: vw(16, 768);
+  }
+
+  @include mobile {
+    width: 100%;
+    gap: vw(20, 375);
+  }
+
+  &__title {
+    // font-weight: 700;
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: vw(20, 1920);
+
+    @include tablet {
+      gap: vw(16, 375);
+    }
+  }
+}
+
+.investment-stat-item {
+  display: flex;
+  flex-direction: column;
+  gap: vw(4, 1920);
+}

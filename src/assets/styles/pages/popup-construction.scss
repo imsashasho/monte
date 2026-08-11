@@ -1,0 +1,235 @@
+@use '../assets/mixins' as *;
+@use '../assets/vars' as *;
+
+.popup-construction {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 10000;
+  background: rgba(255, 255, 255, 0.01);
+  backdrop-filter: blur(30px);
+  -webkit-backdrop-filter: blur(30px);
+  transform: translateY(100%);
+
+  transition: transform 0.5s ease-in-out;
+
+  &.active {
+    transform: translateY(0%);
+  }
+
+  &-inner {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &-close {
+    position: absolute;
+    top: vw(24, 1920);
+    right: vw(24, 1920);
+    width: 32px;
+    height: 32px;
+    background: var(--white);
+    z-index: 10;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    border-radius: 50%;
+    border: 1px solid rgba(100, 103, 108, 0.2);
+
+    @include tablet {
+      width: vw(32, 768);
+      height: vw(32, 768);
+      top: vw(24, 768);
+      right: vw(24, 768);
+      padding: vw(8, 768);
+    }
+
+    @include mobile {
+      width: vw(32, 375);
+      height: vw(32, 375);
+      top: vw(16, 375);
+      right: vw(16, 375);
+      padding: vw(8, 375);
+    }
+
+    &:hover {
+      svg {
+        transform: rotate(90deg);
+      }
+    }
+
+    svg {
+      width: 16px;
+      height: 16px;
+      transition: all ease-in-out 0.3s;
+      flex-shrink: 0;
+    }
+  }
+
+  &-content {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    padding: vw(40, 1920);
+  }
+
+  &-swiper {
+    width: 100%;
+    height: 100%;
+    position: relative;
+  }
+
+  &-swiper-wrapper {
+    width: 100%;
+    height: 100%;
+  }
+
+  &-homepage-slide {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+
+    @include tablet {
+      max-height: vw(654, 768);
+    }
+
+    @include mobile {
+      max-height: vw(446, 375);
+    }
+
+    img {
+      max-width: 80%;
+      height: 100%;
+      object-fit: contain;
+      border-radius: vw(40, 1920);
+    }
+
+    .iframe-wrapper {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      iframe {
+        width: 80%;
+        height: 100%;
+        border: none;
+
+        @include mobile {
+          height: auto;
+        }
+      }
+    }
+  }
+
+  &-swiper-button {
+    position: absolute;
+    top: 50%;
+    left: vw(40, 1920);
+    transform: translateY(-50%);
+    z-index: 10;
+    width: vw(80, 1920);
+    height: vw(80, 1920);
+    cursor: pointer;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 100px;
+    border: 1px solid rgba(100, 103, 108, 0.2);
+    background: var(--white);
+    padding: vw(20, 1920);
+
+    @include tablet {
+      width: vw(68, 768);
+      height: vw(68, 768);
+      left: vw(32, 768);
+    }
+    @include mobile {
+      width: vw(54, 375);
+      height: vw(54, 375);
+      left: vw(24, 375);
+    }
+
+    &.swiper-button-next {
+      left: auto;
+      right: vw(40, 1920);
+
+      @include tablet {
+        right: vw(32, 768);
+      }
+
+      @include mobile {
+        right: vw(32, 375);
+      }
+    }
+
+    &.swiper-button-disabled {
+      opacity: 0.5;
+      cursor: default;
+    }
+
+    &:hover {
+      svg {
+        transform: scale(1.1);
+      }
+    }
+
+    svg {
+      width: vw(24, 1920);
+      height: vw(24, 1920);
+      transition: transform 0.3s ease;
+      flex-shrink: 0;
+
+      @include tablet {
+        width: vw(24, 768);
+        height: vw(24, 768);
+      }
+
+      @include mobile {
+        width: vw(24, 375);
+        height: vw(24, 375);
+      }
+    }
+  }
+
+  &-swiper-number-wrapper {
+    z-index: 100;
+    display: flex;
+    gap: vw(6, 1920);
+    padding: vw(8, 1920) vw(16, 1920);
+    position: absolute;
+    bottom: vw(40, 1920);
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 100px;
+    background: var(--burnt-clay);
+
+    @include tablet {
+      padding: vw(8, 768) vw(16, 768);
+      gap: vw(6, 768);
+      bottom: vw(24, 768);
+    }
+
+    @include mobile {
+      padding: vw(8, 375) vw(16, 375);
+      gap: vw(6, 375);
+      bottom: vw(24, 375);
+    }
+
+    span {
+      color: var(--white);
+    }
+  }
+}

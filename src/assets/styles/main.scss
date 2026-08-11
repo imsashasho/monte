@@ -1,0 +1,27 @@
+@use './assets/vars' as *; // variables
+@use './assets/mixins' as *; // mixins
+@use './assets/smart-grid'; // mixins smartgrid.js
+// libraries
+@use './libs';
+
+// assets
+@use './assets/fonts'; // шрифты
+@use './assets/base'; // общие стили
+@use './assets/animation'; // анимации
+@use './assets/class'; // main style
+@use './assets/interface'; // main style
+
+@use '../../pug/components/form/form';
+@use './components/buttons/button-regular';
+@use './components/section-title';
+
+@use './assets/templates'; // main style
+@use './assets/scroll-lock'; // блокування скролу під оверлеями
+
+// sass dima
+@use './header';
+@use './footer';
+@use './loader';
+@use './modal-mobile';
+
+@use './pagination';

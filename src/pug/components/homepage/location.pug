@@ -1,0 +1,51 @@
+section.location#location 
+  .location-logo-block 
+    img(src="/assets/images/logo-big.svg", alt="Big logo")
+  
+  h2.location-title.text-section-title(parallax-text) локація
+
+  .location-img-block 
+    picture
+      source(srcset="/assets/images/location-map-mob.png", media="(max-width: 767px)")
+      img(src="/assets/images/location-map.png", alt="Map image")
+  
+    .location-pins-block 
+      .location-pins-block-main(data-list-item)   
+        .img-block 
+          img(src="/assets/images/const-popup.png", alt="Main pin image")
+        <svg xmlns="http://www.w3.org/2000/svg" width="23" height="12" viewBox="0 0 23 12" fill="none">
+          <path d="M11.3137 11.3137L22.6274 0H0L11.3137 11.3137Z" fill="#E3DCD0"/>
+        </svg>
+      .location-pins-block-robot-1(data-list-item)  
+        img(src="/assets/images/map-pin-robot.png", alt="Robot pin image")
+      .location-pins-block-nature(data-list-item)  
+        img(src="/assets/images/map-pin-nature.png", alt="Nature pin image")
+      .location-pins-block-pets(data-list-item)  
+        img(src="/assets/images/map-pin-pets.png", alt="Pets pin image")
+      .location-pins-block-robot-2(data-list-item)  
+        img(src="/assets/images/map-pin-robot.png", alt="Robot pin image")
+      .location-pins-block-cutlery(data-list-item)  
+        img(src="/assets/images/map-pin-cutlery.png", alt="Cutlery pin image")
+      .location-pins-block-gas-station(data-list-item)  
+        img(src="/assets/images/map-pin-gas-station.png", alt="Gas station pin image")
+    
+  .location-swipe-title-block.hide-on-tablet.hide-on-desktop
+    .location-swipe-path
+      img(src="/assets/images/swipe-path.png", alt="Swipe path image")
+      .location-swipe-path-marker 
+        img(src="/assets/images/swipe.png", alt="Swipe marker")
+    p.location-swipe-title.text-h3 Перетягніть в сторону
+    
+
+  .location-card
+    .location-card-img-block
+      img(src="/assets/images/logo-small.svg", alt="Small logo image")
+    h3.location-card-title.text-h4(parallax-text) Продуманий простір для комфортного життя
+    p.location-card-text.text-body(parallax-text) Riverside — житловий комплекс в Умані, створений для комфортного ритму життя поруч із природою. Поєднання сучасної архітектури, продуманого простору та спокійного оточення формує середовище, у якому хочеться залишатися.
+  
+    a(href="https://maps.app.goo.gl/TY51nZPPkp5jfYCH6" target="_blank").location-card-button.text-button
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+        <path d="M7.30077 1.33942C7.25593 1.34539 7.10943 1.36375 6.97557 1.37945C5.93297 1.50167 4.92241 1.98793 4.13182 2.74762C3.70368 3.15904 3.42427 3.53892 3.16112 4.06793C2.59317 5.20997 2.51157 6.47272 2.92772 7.69586C3.02559 7.98355 3.234 8.41375 3.39354 8.65973C3.59269 8.96672 7.61808 14.626 7.666 14.6666C7.6853 14.6666 11.7379 8.96874 11.9385 8.65973C12.4627 7.85157 12.7358 6.75657 12.6514 5.79742C12.5456 4.59717 12.0566 3.57054 11.2002 2.74762C10.4279 2.00556 9.49984 1.5482 8.43749 1.38727C8.19335 1.35036 7.45385 1.3191 7.30077 1.33942ZM7.666 3.83356C9.04674 3.83356 10.166 4.95282 10.166 6.33356C10.1659 7.71422 9.04669 8.83356 7.666 8.83356C6.28545 8.8334 5.16609 7.71413 5.166 6.33356C5.166 4.95291 6.2854 3.83371 7.666 3.83356Z" fill="white"/>
+      </svg>
+      span(parallax-text) Прокласти маршрут
+        

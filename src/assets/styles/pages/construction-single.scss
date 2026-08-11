@@ -1,0 +1,7 @@
+@use '../assets/mixins' as *;
+@use '../assets/vars' as *;
+
+.construction-single-page {
+  // We can reuse the news-single styles, so we can just @import 'news-single'
+  // Or better, let's keep it simple.
+}

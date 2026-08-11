@@ -1,0 +1,149 @@
+
+extends ../layout/main
+
+block variable
+  -
+    var title_page = 'news-page'
+    var id_page = 'news-page'
+    var class_page = 'news-page'
+
+block meta
+  title= 'MONTE'
+  meta(name='description', content='')
+block head
+    link(rel='stylesheet', href="./assets/styles/main.min.css")
+    script(defer src="./assets/scripts/vendors.bundle.js")
+    script(defer src="./assets/scripts/index.bundle.js")
+    script(defer src="./assets/scripts/news.bundle.js")
+block scripts
+
+block header
+  include ../includes/header.pug
+
+  -
+    const newsPageSlides = [
+      {
+        img: '/assets/images/news-card-1.png',
+        label:'Акція',
+        title:'MONTE відкриває продаж нової черги',
+        date: '06.08.2025',
+        type:'promotions'
+      },
+      {
+        img: '/assets/images/news-card-2.png',
+        label:'Акція',
+        title:'Спеціальні умови придбання',
+        date: '06.08.2025',
+        type:'promotions'
+      },
+      {
+        img: '/assets/images/news-card-3.png',
+        label:'Акція',
+        title:'У MONTE стартував новий етап будівельних робіт',
+        date: '06.08.2025',
+        type:'promotions'
+      },
+      {
+        img: '/assets/images/news-card-1.png',
+        label:'Акція',
+        title:'MONTE відкриває продаж нової черги',
+        date: '06.08.2025',
+        type:'promotions'
+      },
+      {
+        img: '/assets/images/news-card-1.png',
+        label:'Акція',
+        title:'MONTE відкриває продаж нової черги',
+        date: '06.08.2025',
+        type:'promotions'
+      },
+      {
+        img: '/assets/images/news-card-2.png',
+        label:'Новина',
+        title:'Спеціальні умови придбання',
+        date: '06.08.2025',
+        type:'news'
+      },
+      {
+        img: '/assets/images/news-card-3.png',
+        label:'Акція',
+        title:'У MONTE стартував новий етап будівельних робіт ',
+        date: '06.08.2025',
+        type:'promotions'
+      },
+      {
+        img: '/assets/images/news-card-1.png',
+        label:'Акція',
+        title:'MONTE відкриває продаж нової черги',
+        date: '06.08.2025',
+        type:'promotions'
+      },
+      {
+        img: '/assets/images/news-card-1.png',
+        label:'Новина',
+        title:'MONTE відкриває продаж нової черги',
+        date: '06.08.2025',
+        type:'news'
+      },
+      {
+        img: '/assets/images/news-card-2.png',
+        label:'Новина',
+        title:'Спеціальні умови придбання',
+        date: '06.08.2025',
+        type:'news'
+      },
+      {
+        img: '/assets/images/news-card-3.png',
+        label:'Акція',
+        title:'У MONTE стартував новий етап будівельних робіт',
+        date: '06.08.2025',
+        type:'promotions'
+      },
+      {
+        img: '/assets/images/news-card-1.png',
+        label:'Новина',
+        title:'MONTE відкриває продаж нової черги',
+        date: '06.08.2025',
+        type:'news'
+      },
+    ]
+
+block content
+  .container
+    section.news-page#news-page
+      .news-page-banner-title-block
+        .news-page-banner-block
+          img(src="/assets/images/image-top.png", alt="News banner image" img-scale)
+          h2.news-page-title.text-section-title.text-h1.text-black(parallax-text) Новини та акції
+
+      ul.news-page-list.news-cards-list
+        each slide in newsPageSlides
+          li.news-page-list-item(data-category=slide.type)
+            a(href="/news-single.html" aria-label="Link to the single news page").news-page-list-card-link
+              .news-page-list-img-block
+                img(src=slide.img, alt="page-list news image")
+
+              .news-page-list-text-block
+                p.news-page-list-title.text-subtitle-bold.text-h4=slide.title
+
+                .news-page-list-link-data-block
+                  span.news-page-list-link.text-button.text-white Переглянути
+
+                  .news-page-list-data-block
+                    .news-page-list-icon-block
+                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                        <path d="M5 1.39844C4.66863 1.39844 4.40039 1.66668 4.40039 1.99805V2.39844H3.33301C2.3156 2.3986 1.40039 3.16635 1.40039 4.2207V12.7754C1.40039 13.8297 2.3156 14.5975 3.33301 14.5977H12.667C13.6844 14.5975 14.5996 13.8297 14.5996 12.7754V4.2207C14.5996 3.16635 13.6844 2.3986 12.667 2.39844H11.5996V1.99805C11.5996 1.66668 11.3314 1.39844 11 1.39844C10.6686 1.39844 10.4004 1.66668 10.4004 1.99805V2.39844H5.59961V1.99805C5.59961 1.66668 5.33137 1.39844 5 1.39844ZM12.667 3.59766C13.122 3.59781 13.4004 3.92521 13.4004 4.2207V6.39844H2.59961V4.2207C2.59961 3.92521 2.87798 3.59781 3.33301 3.59766H4.40039V3.99805C4.40039 4.32942 4.66863 4.59766 5 4.59766C5.33137 4.59766 5.59961 4.32942 5.59961 3.99805V3.59766H10.4004V3.99805C10.4004 4.32942 10.6686 4.59766 11 4.59766C11.3314 4.59766 11.5996 4.32942 11.5996 3.99805V3.59766H12.667Z" fill="#160F10"/>
+                      </svg>
+                    p.news-page-list-data.text-button= slide.date
+
+      +pagination()
+
+block footer
+  include ../includes/footer.pug
+
+block modal
+  include ../includes/form-popup.pug
+  include ../includes/modal-mobile.pug
+
+
+

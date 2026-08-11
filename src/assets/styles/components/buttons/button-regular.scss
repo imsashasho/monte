@@ -1,0 +1,263 @@
+@use '../../assets/mixins' as *;
+@use '../../assets/vars' as *;
+
+.parallax-container {
+  position: relative;
+  width: 100%;
+  height: var(--app-height);
+  overflow: hidden;
+  [img-parallax] {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+.button {
+  pointer-events: auto;
+  outline: none;
+  margin: 0;
+  padding: 0;
+  border: none;
+  background: none;
+  font: inherit; /* Inherit font styles from parent */
+  line-height: normal; /* Adjust line height if needed */
+  cursor: pointer;
+  text-decoration: none;
+  background: var(--white);
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: fit-content;
+  width: fit-content;
+  font-family: $default-font;
+  padding: vw(16, 1920) vw(32, 1920);
+  gap: vw(14, 1920);
+
+  @include mobile {
+    padding: 3.88vw 4.44vw;
+  }
+
+  &.swiper-button-disabled {
+    opacity: 0.5;
+    &:hover {
+      &::before {
+        transform: translate3d(0, 0, 0);
+      }
+    }
+  }
+
+  svg {
+    position: relative;
+    width: vw(12, 1920);
+    height: auto;
+  }
+}
+
+.button::before,
+.button::after {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.button-rounded {
+  border-radius: 50%;
+  width: vw(40, 1920);
+  height: vw(40, 1920);
+  background: var(--white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  svg {
+    width: vw(20, 1920);
+    height: vw(20, 1920);
+    transition: all 0.3s ease-in-out;
+  }
+
+  &:hover {
+    svg {
+      transform: scale(1.1);
+    }
+  }
+}
+.button--mimas {
+  border-radius: 100px;
+  overflow: hidden;
+  color: var(--blue);
+  background: var(--white);
+
+  &.button--blue {
+    background: var(--white);
+    span {
+      color: var(--white);
+      transition: all ease-in-out 0.3s;
+    }
+
+    svg {
+      fill: var(--white);
+      transition: all 0.3s ease-in-out;
+    }
+
+    &::before {
+      background: var(--blue);
+    }
+
+    &:hover {
+      span {
+        color: var(--blue);
+      }
+
+      svg {
+        fill: var(--blue);
+      }
+
+      &::before {
+        transform: translate3d(100%, 0, 0);
+      }
+    }
+  }
+
+  &.button--white {
+    background: var(--blue);
+    span {
+      color: var(--blue);
+    }
+
+    &::before {
+      background: var(--white);
+    }
+
+    &:hover {
+      span {
+        color: var(--white);
+      }
+    }
+  }
+
+  &.button--bordered {
+    background: transparent;
+    border: 1px solid var(--blue);
+    gap: var(--g10);
+    span {
+      color: var(--blue);
+      transition: all ease-in-out 0.3s;
+    }
+
+    svg {
+      stroke: var(--blue);
+      transition: all 0.3s ease-in-out;
+      width: vw(10, 1920);
+      height: vw(10, 1920);
+      path {
+        stroke: var(--blue);
+        transition: all 0.3s ease-in-out;
+      }
+    }
+
+    &::before {
+      background: var(--blue);
+      bottom: 0;
+      transform: translateY(100%);
+      top: auto !important;
+    }
+
+    &:hover {
+      span {
+        color: var(--white);
+      }
+      &::before {
+        transform: translate3d(0, 0%, 0);
+      }
+
+      svg {
+        z-index: 2;
+
+        path {
+          stroke: var(--white);
+        }
+      }
+    }
+  }
+
+  &::before {
+    content: '';
+    width: 130%;
+    height: 110%;
+    top: 0;
+    left: -15%;
+    transform: skew(30deg);
+    transition: transform 0.4s cubic-bezier(0.3, 1, 0.8, 1);
+  }
+
+  &:hover {
+    &::before {
+      transform: translate3d(100%, 0, 0);
+    }
+    // &.button--white {
+    //   background: var(--green-light);
+    // }
+  }
+
+  span {
+    position: relative;
+
+    transition: all ease-in-out 0.3s;
+  }
+}
+
+.swiper {
+  &-nav-wrap {
+    display: flex;
+    gap: 20px;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &-nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 64px;
+    height: 64px;
+
+    @include tabletLarge {
+      width: 54px;
+      height: 54px;
+    }
+
+    @include tablet {
+      width: 48px;
+      height: 48px;
+    }
+
+    &::before {
+      width: 140%;
+      left: -20%;
+    }
+
+    &.swiper-button-disabled {
+      display: none;
+    }
+
+    svg {
+      width: 48px;
+      height: 48px;
+      stroke: var(--black);
+      position: relative;
+      transition: all 0.3s ease-in-out;
+
+      @include tabletLarge {
+        width: 36px;
+        height: 36px;
+      }
+    }
+  }
+  &-nav--next {
+    svg {
+      transform: rotate(180deg);
+    }
+  }
+}

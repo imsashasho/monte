@@ -1,0 +1,35 @@
+
+extends ../layout/main
+
+block variable
+  -
+    var title_page = 'news-single-page'
+    var id_page = 'news-single-page'
+    var class_page = 'news-single-page'
+
+block meta
+  title= 'Riverside Uman'
+  meta(name='description', content='')
+block head
+    link(rel='stylesheet', href="./assets/styles/main.min.css")
+    script(defer src="./assets/scripts/vendors.bundle.js")
+    script(defer src="./assets/scripts/index.bundle.js")
+    script(defer src="./assets/scripts/news_single.bundle.js")
+block scripts
+
+block header
+  include ../includes/header.pug
+
+block content
+  include ../components/news-single/news-section.pug
+  include ../components/news-single/more-news.pug
+
+block footer
+  include ../includes/footer.pug
+
+block modal 
+  include ../includes/form-popup.pug
+
+
+    
+  

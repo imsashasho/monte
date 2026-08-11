@@ -1,0 +1,47 @@
+mixin pagination(options = {})
+  //- attributes — сюди прилетить (data-pagination)
+  .pagination&attributes(attributes)
+    .pagination__utility 
+      button(type="button").pagination__prev(disabled data-pagination="prev")
+        //- <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+        //-   <g clip-path="url(#clip0_6124_52202)">
+        //-     <path d="M-1.04883 11.2002V12.9971L11.0469 19.2012V16.6953L4.17188 13.2012H23V11.041H4.28711L11.0469 7.60547V4.91016L-1.04883 11.2002Z" fill="#F1F1F2"/>
+        //-   </g>
+        //-   <defs>
+        //-     <clipPath id="clip0_6124_52202">
+        //-       <rect width="24" height="24" fill="white" transform="matrix(-1 0 0 1 24 0)"/>
+        //-     </clipPath>
+        //-   </defs>
+        //- </svg>
+      
+      .pagination-count
+        input.pagination-count__current.text-button(
+          type="text" 
+          name="pagination-current" 
+          value="01" 
+          readonly
+        )
+
+        
+        .pagination-count__max.text-button з 
+          span(data-planning-pages-count) ... 
+          |  сторінок
+          
+      button(type="button").pagination__next(data-pagination="next")
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+          <g clip-path="url(#clip0_6124_52212)">
+            <path d="M23.0488 11.2002V12.9971L10.9531 19.2012V16.6953L17.8281 13.2012H-1V11.041H17.7129L10.9531 7.60547V4.91016L23.0488 11.2002Z" fill="#F1F1F2"/>
+          </g>
+          <defs>
+            <clipPath id="clip0_6124_52212">
+              <rect width="24" height="24" fill="white"/>
+            </clipPath>
+          </defs>
+        </svg>
+
+    button.pagination__more.text-button(type="button" data-more) 
+      span Завантажити ще
+      <svg xmlns="http://www.w3.org/2000/svg" width="13" height="14" viewBox="0 0 13 14" fill="none">
+        <path d="M11.8336 6.34834L6.18192 12L0.530274 6.34835M6.18192 12L6.18192 6.73953e-08" stroke="#1C1C1E" stroke-width="1.5"/>
+        <path d="M11.8336 6.34834L6.18192 12L0.530274 6.34835M6.18192 12L6.18192 6.73953e-08" stroke="black" stroke-opacity="0.2" stroke-width="1.5"/>
+      </svg>

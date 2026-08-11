@@ -1,0 +1,17 @@
+import './hero';
+import './advantages';
+import './gallery';
+import './construction';
+import './news';
+import './faq';
+import './popupConstruction';
+import './about';
+import './location';
+import './animation';
+import './featuresStack';
+import './advantagesAnim';
+import './aboutAnim';
+import './featuresStatsAnim';
+import './featuresInfraStack';
+import './investmentAnim';
+import './swiperCascade';

@@ -1,0 +1,23 @@
+// Applied by scripts/common/lenis-stop-handlers.js while an overlay is open.
+// Hiding the viewport's overflow keeps the current scroll offset intact, so the
+// page behind the overlay neither scrolls nor jumps.
+html.is-scroll-locked {
+  overflow: hidden;
+}
+
+// Losing the scrollbar widens the viewport by its width. Pad that gutter back so
+// the layout does not shift sideways; --scrollbar-width is 0 wherever scrollbars
+// are overlaid or hidden, which makes these rules no-ops there.
+html.is-scroll-locked body {
+  padding-right: var(--scrollbar-width, 0px);
+}
+
+// Fixed, full-width elements are laid out against the viewport, so body padding
+// cannot reach them — trim their width instead.
+html.is-scroll-locked .header,
+html.is-scroll-locked .header-menu,
+html.is-scroll-locked .form-popup,
+html.is-scroll-locked .modal-mobile,
+html.is-scroll-locked .popup-construction {
+  width: calc(100% - var(--scrollbar-width, 0px));
+}

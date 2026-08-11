@@ -1,0 +1,73 @@
+include ../includes/mixins.pug
+include ../../assets/scripts/common/pagination/pagination.pug
+
+-
+  var pagesLink = [
+  {
+  home: '/',
+  characteristics: './characteristics.html',
+  contacts: './contacts.html',
+  terrace: './terrace.html'
+  }
+  ];
+block variable
+doctype html
+html(lang="uk" data-status="local")
+  head
+    meta(charset='utf-8')
+    meta(name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0")
+    //- Edge и ряд мобильных браузеров слишком умны. Отключим это.
+    meta(name='format-detection', content='telephone=no')
+    meta(name='format-detection', content='date=no')
+    meta(name='format-detection', content='address=no')
+    meta(name='format-detection', content='email=no')
+    meta(content='notranslate', name='google')
+    //- <link rel="apple-touch-icon" sizes="180x180" href="./static/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="./static/favicon.svg">
+    <link rel="icon" type="image/png" sizes="16x16" href="./static/favicon.svg">
+    <link rel="mask-icon" href="./static/safari-pinned-tab.svg">
+    <link rel="shortcut icon" href="./static/favicon.svg">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="msapplication-config" content="./static/browserconfig.xml">
+    <meta name="theme-color" content="#ffffff">
+    block meta
+    block head
+
+  body(class= class_page id= id_page)
+    // START SVG SPRITE
+    include ../../assets/svg-sprite/sprite/symbol_sprite.php
+    //- svg(viewBox="0 0 768 239" fill="none" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" style="position:absolute")
+    //-   symbol( id="icon-sliceFigure" viewBox="0 0 768 239" preserveAspectRatio="none")
+    //-     path(d="M54.4337 234.968C36.3767 236.605 18.1622 237.636 0.00019815 239L-2.84408e-06 0.500015L768 0.500006L768 17.3849L768 16.7223C744.799 33.0018 716.348 47.2545 689.525 61.5634C662.597 75.842 634.462 89.3628 605.277 102.095C546.907 127.5 484.547 149.903 419.038 168.638C402.766 173.488 386.126 177.854 369.539 182.28C361.193 184.462 352.741 186.433 344.343 188.525L331.745 191.617L318.99 194.467C285.08 202.349 250.226 208.806 215.214 214.869C197.525 217.567 180.045 220.659 162.146 222.872L135.428 226.48L108.499 229.542C90.5999 231.815 72.4907 233.21 54.4337 234.968Z")
+    //- svg(viewBox="0 0 541 968" fill="none" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" style="position:absolute")
+    //-   symbol( id="icon-sliceFigure-big" viewBox="0 0 541 968" preserveAspectRatio="none")
+    //-     path(d="M38.6667 969.5C68.5714 944.939 95.3566 915.731 121.742 886.958C126.785 881.46 131.813 875.977 136.845 870.545C168.156 836.547 197.805 801.024 225.726 764.176C281.436 690.477 330.565 611.742 371.648 529.031L371.652 529.024C381.079 510.815 389.671 492.241 398.265 473.661C399.365 471.283 400.465 468.905 401.567 466.527C404.627 459.791 407.493 453.009 410.363 446.216C411.983 442.384 413.604 438.548 415.261 434.716L38.6667 969.5ZM38.6667 969.5H0.5V0.5H525.877C524.847 8.42744 523.903 16.3563 522.96 24.2788C521.193 39.1152 519.43 53.9294 517.109 68.67C515.985 75.3153 514.929 81.9616 513.875 88.6025C511.306 104.775 508.743 120.915 505.21 136.929L505.208 136.94L498.495 170.934L498.491 170.951L490.581 204.679L490.579 204.688C487.238 220.244 482.987 235.54 478.728 250.86C476.802 257.787 474.875 264.72 473.03 271.684C459.732 315.897 445.573 359.899 428.292 402.703L428.29 402.71L422.044 418.805L422.038 418.82L415.262 434.714L38.6667 969.5Z")
+    // END SVG SPRITE
+    // START LOADER
+    include ../includes/loader.html
+    // END LOADER
+    // START POPUP MODAL
+    //- include ../includes/popup.pug
+    // END POPUP MODAL
+    // START MENU
+    //- include ../includes/menu.pug
+    // END MENU
+
+    // -------
+    // -------
+    // -------
+    // -------
+    //- .toast-wrapper(data-toast-wrapper)
+    // START HEADER
+    block header
+    .page__inner
+      .page__content
+        block content
+
+
+      //.page__footer-wrapper
+      // START FOOTER
+      block footer
+      // END FOOTER
+    block modal
+    block scripts

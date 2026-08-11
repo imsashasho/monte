@@ -1,0 +1,64 @@
+-
+	const gallerySlides = {
+		landscapes: [
+			'/assets/images/gallery-card-1.png',
+			'/assets/images/gallery-card-2.png',
+			'/assets/images/gallery-card-1.png',
+		],
+		exterior: [
+			'/assets/images/gallery-card-2.png',
+			'/assets/images/gallery-card-1.png',
+			'/assets/images/gallery-card-2.png',
+		],
+		interior: [
+			'/assets/images/gallery-card-1.png',
+			'/assets/images/gallery-card-2.png',
+			'/assets/images/gallery-card-1.png',
+		],
+		recreation: [
+			'/assets/images/gallery-card-2.png',
+			'/assets/images/gallery-card-1.png',
+			'/assets/images/gallery-card-2.png',
+		],
+	}
+
+section.gallery#gallery
+	.gallery__shell
+		.gallery-iframe
+			.gallery-iframe-inner
+				iframe(src='https://www.youtube.com/embed/0g1j6k7J3xM' title='YouTube video player' frameborder='0' allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share' allowfullscreen)
+		h2.gallery__title(parallax-text)
+			span.text-h1.text-black ГАЛЕРЕЯ
+
+		.gallery__frame
+			button.gallery__nav.gallery__nav--prev(type='button' aria-label='Previous gallery slide' data-gallery-prev)
+				<svg xmlns="http://www.w3.org/2000/svg" width="40" height="24" viewBox="0 0 40 24" fill="none">
+					<g clip-path="url(#clip0_6124_51573)">
+						<path d="M-0.0820312 10.667V13.6621L20.0781 24.001V19.8252L8.61719 14.001H40V10.4014H8.81348L20.0781 4.67676V0.183594L-0.0820312 10.667Z" fill="#F1F1F2"/>
+					</g>
+					<defs>
+						<clipPath id="clip0_6124_51573">
+							<rect width="40" height="24" fill="white" transform="matrix(-1 0 0 1 40 0)"/>
+						</clipPath>
+					</defs>
+				</svg>
+			button.gallery__nav.gallery__nav--next(type='button' aria-label='Next gallery slide' data-gallery-next)
+				<svg xmlns="http://www.w3.org/2000/svg" width="40" height="24" viewBox="0 0 40 24" fill="none">
+					<path d="M40.082 10.4834V13.4785L19.9219 23.8174V19.6416L31.3828 13.8174H0V10.2178H31.1865L19.9219 4.49316V0L40.082 10.4834Z" fill="#F1F1F2"/>
+				</svg>
+
+			.swiper.gallery-swiper(data-gallery-swiper)
+				.swiper-wrapper
+					//- Backend renders the first category by default, JS syncs it with the active tab
+				each imgPath in gallerySlides.landscapes
+						.swiper-slide.gallery-swiper__slide
+							img.gallery-swiper__image(src=imgPath alt='MONTE gallery image')
+
+			.gallery__tabs(role='tablist' aria-label='Gallery categories')
+				button.gallery__tab(type='button' role='tab' aria-selected='false' data-gallery-tab='landscapes') КРАЄВИДИ
+				button.gallery__tab(type='button' role='tab' aria-selected='false' data-gallery-tab='exterior') ЕКСТЕРʼЄР
+				button.gallery__tab.is-active(type='button' role='tab' aria-selected='true' data-gallery-tab='interior') ІНТЕРʼЄР
+				button.gallery__tab(type='button' role='tab' aria-selected='false' data-gallery-tab='recreation') ЗОНИ ВІДПОЧИНКУ
+
+			script(type='application/json' data-gallery-data)
+				!= JSON.stringify(gallerySlides)
